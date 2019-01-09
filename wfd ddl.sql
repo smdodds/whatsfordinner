@@ -10,7 +10,8 @@ drop table FRIDGE_INGREDIENTS cascade constraints;
 --select 'drop sequence ' || sequence_name || ';' from user_sequences;
 
 CREATE TABLE Administrator (
-    Id number PRIMARY KEY
+    Id number PRIMARY KEY,
+	CONSTRAINT FK_Administrator_LoginId FOREIGN KEY (Id) REFERENCES Login (Id);
 );
 
 CREATE TABLE Login (
@@ -19,10 +20,8 @@ CREATE TABLE Login (
     Password varchar2(25) NOT NULL,
     Firstname varchar2(50),
     Lastname varchar2(50),
-    Email varchar2(100),
-    CONSTRAINT FK_Login_AdministratorId FOREIGN KEY (Id) REFERENCES Administrator (Id)
+    Email varchar2(100)
 );
-ALTER TABLE Administrator ADD CONSTRAINT FK_Administrator_LoginId FOREIGN KEY (Id) REFERENCES Login (Id);
 
 CREATE TABLE Fridge (
     Id number PRIMARY KEY,
