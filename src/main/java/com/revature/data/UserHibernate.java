@@ -39,9 +39,14 @@ public class UserHibernate implements UserDAO {
 		Query<User> q = s.createQuery(query, User.class);
 		q.setParameter("email", u.getEmail());
 		q.setParameter("password", u.getPassword());
-		u = q.list().get(0);
-		s.close();
-		return u;
+		List<User> l = q.list();
+		if(l.isEmpty()) {
+			s.close();
+			return null;
+		} else {
+			s.close();
+			return l.get(0);
+		}
 	}
 
 	@Override

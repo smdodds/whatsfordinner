@@ -2,6 +2,8 @@ package com.revature.data;
 
 import static org.junit.Assert.*;
 
+import java.util.Set;
+
 import org.junit.Test;
 
 import com.revature.beans.User;
@@ -10,50 +12,127 @@ public class UserHibernateTest {
 	UserDAO ud = new UserHibernate();
 	@Test
 	public void testAddUser() {
-		User inserted = new User("gg","gg","Gavin","Greif","g@g.com");
+		//Test Code
+		
+			//Adding a User
+		User inserted = new User("gg","gg","G1","G2","g@g.com");
 		Integer i = ud.addUser(inserted);
-		assertNotNull(i);
+		
+		//Deleting Database Changes
+			//Ensuring we have the ID
+		inserted = ud.getUserByEmailAndPassword(inserted);
+		ud.deleteUser(inserted);
+		
+		//Test
+		assertNotEquals((int) i, 0);
 	}
 
 	@Test
 	public void testGetUserbyId() {
-		User received = ud.getUserbyId(1);
+		//Test Code
+			
+			//Adding a User
+		User inserted = new User(1,"gg","gg","G1","G2","g@g.com");
+		ud.addUser(inserted);
+		
+			//Ensure we have the ID
+		inserted = ud.getUserByEmailAndPassword(inserted);
+		
+			//Searching for that User
+		User received = ud.getUserbyId(inserted.getId());
+		
+		//Deleting Database Changes
+		ud.deleteUser(inserted);
+		
+		//Test
 		assertNotNull(received);
 	}
 
 	@Test
 	public void testGetUserByEmailAndPassword() {
-		User expected = new User();
-		expected.setEmail("new@email.com");
-		expected.setPassword("gg");
-		User u = ud.getUserByEmailAndPassword(expected);
-		assertNotNull(u);
+
+		//Test Code
+		
+			//Adding a User
+		User inserted = new User(1,"gg","gg","G1","G2","g@g.com");
+		ud.addUser(inserted);
+			//Searching for that User
+		User found = ud.getUserByEmailAndPassword(inserted);
+		
+		//Deleting Database Changes
+		ud.deleteUser(inserted);
+		
+		//Test
+		assertNotNull(found);
 	}
 
 	@Test
 	public void testGetUsers() {
-		fail("Not yet implemented"); // TODO
+		
+			//Adding Users
+		User u1 = new User(1,"gg","gg","G1","G2","g@g.com");
+		User u2 = new User(2,"hh","hh","H1","H2","h@h.com");
+		User u3 = new User(3,"ii","ii","I1","I2","i@i.com");
+		ud.addUser(u1);
+		ud.addUser(u2);
+		ud.addUser(u3);
+		
+			//Search for those Users
+		Set<User> uList = ud.getUsers();
+		
+		//Delete Database Changes
+		ud.deleteUser(u1);
+		ud.deleteUser(u2);
+		ud.deleteUser(u3);
+		
+		//Test
+		assertTrue(uList.contains(u2));
 	}
 
 	@Test
 	public void testUpdateUser() {
-		User previous = new User("gg","gg","Gavin","Greif","g@g.com");
-		User u = ud.getUserByEmailAndPassword(previous);
-		previous.setId(u.getId());
-		previous.setEmail("new@email.com");
-		u = ud.updateUser(previous);
-		assertEquals(previous.getEmail(), u.getEmail());
+		//Test Code
+		
+			//Adding a User
+		User previous = new User(1,"gg","gg","G1","G2","g@g.com");
+		ud.addUser(previous);
+		
+			//Ensure we have the ID
+		previous = ud.getUserByEmailAndPassword(previous);
+		
+			//Updating that User through the ID
+		User u = new User(1,"hh","hh","H1","H2","h@h.com");
+		u.setId(previous.getId());
+		ud.updateUser(u);
+		
+			//Saving data from the updated User
+		User updated = ud.getUserbyId(previous.getId());
+		
+		//Deleting Database Changes
+		ud.deleteUser(u);
+		
+		//Test
+		assertNotEquals(previous, updated);
 	}
 
 	@Test
 	public void testDeleteUser() {
-		//  TODO
-		// Properly deletes, but fails due to an IndexOutOfBoundsException
-		User toBeDeleted = new User("gg","gg","Gavin","Greif","new@email.com");
-		User expected = ud.getUserByEmailAndPassword(toBeDeleted);
-		toBeDeleted.setId(expected.getId());
+		//Test Code
+		
+			//Adding a User
+		User toBeDeleted = new User("gg","gg","G1","G2","g@g.com");
+		ud.addUser(toBeDeleted);
+		
+			//Ensure we have the ID
+		toBeDeleted = ud.getUserByEmailAndPassword(toBeDeleted);
+		
+			//Deleting User
 		ud.deleteUser(toBeDeleted);
-		expected = ud.getUserByEmailAndPassword(toBeDeleted);
+		
+			//Searching for that User
+		User expected = ud.getUserByEmailAndPassword(toBeDeleted);
+		
+		//Test
 		assertNull(expected);
 	}
 }
