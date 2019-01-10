@@ -10,22 +10,24 @@ public class UserHibernateTest {
 	UserDAO ud = new UserHibernate();
 	@Test
 	public void testAddUser() {
-		fail("Not yet implemented"); // TODO
+		User inserted = new User("gg","gg","Gavin","Greif","g@g.com");
+		Integer i = ud.addUser(inserted);
+		assertNotNull(i);
 	}
 
 	@Test
 	public void testGetUserbyId() {
-		fail("Not yet implemented"); // TODO
+		User received = ud.getUserbyId(1);
+		assertNotNull(received);
 	}
 
 	@Test
 	public void testGetUserByEmailAndPassword() {
 		User expected = new User();
-		expected.setEmail("e@e.com");
-		expected.setPassword("p");
-		expected.setId(1);
+		expected.setEmail("new@email.com");
+		expected.setPassword("gg");
 		User u = ud.getUserByEmailAndPassword(expected);
-		assertEquals(u.getId(), expected.getId());
+		assertNotNull(u);
 	}
 
 	@Test
@@ -35,12 +37,21 @@ public class UserHibernateTest {
 
 	@Test
 	public void testUpdateUser() {
-		fail("Not yet implemented"); // TODO
+		User previous = new User("gg","gg","Gavin","Greif","g@g.com");
+		User u = ud.getUserByEmailAndPassword(previous);
+		previous.setId(u.getId());
+		previous.setEmail("new@email.com");
+		u = ud.updateUser(previous);
+		assertEquals(previous.getEmail(), u.getEmail());
 	}
 
 	@Test
 	public void testDeleteUser() {
-		fail("Not yet implemented"); // TODO
+		User toBeDeleted = new User("gg","gg","Gavin","Greif","new@email.com");
+		User expected = ud.getUserByEmailAndPassword(toBeDeleted);
+		toBeDeleted.setId(expected.getId());
+		ud.deleteUser(toBeDeleted);
+		expected = ud.getUserByEmailAndPassword(toBeDeleted);
+		assertNull(expected);
 	}
-
 }

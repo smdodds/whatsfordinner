@@ -15,13 +15,13 @@ public class UserHibernate implements UserDAO {
 	private static HibernateUtil hu = HibernateUtil.getInstance();
 
 	@Override
-	public User addUser(User u) {
+	public Integer addUser(User u) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		s.save(u);
+		Integer i = (Integer) s.save(u);
 		tx.commit();
 		s.close();
-		return u;
+		return i;
 	}
 
 	@Override
