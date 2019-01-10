@@ -1,0 +1,66 @@
+2019-01-09 19:48:50 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-09 19:48:50 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-09 19:48:50 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-09 19:48:50 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-09 19:48:50 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-09 19:48:50 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-09 19:48:50 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-09 19:48:50 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-09 19:48:50 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-09 19:48:51 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-09 19:48:51 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-09 19:53:36 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-09 19:53:41 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-09 19:53:41 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-09 19:53:42 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-09 19:53:43 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-09 19:53:43 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-09 19:53:43 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-09 19:53:43 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-09 19:53:43 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-09 19:53:45 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-09 19:54:00 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-09 19:55:55 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-09 19:55:59 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-09 19:55:59 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-09 19:56:00 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-09 19:56:01 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-09 19:56:01 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-09 19:56:01 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-09 19:56:01 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-09 19:56:01 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-09 19:56:03 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-09 19:56:11 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-09 19:56:37 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-09 19:56:37 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-09 19:56:37 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-09 19:56:37 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-09 19:56:37 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-09 19:56:37 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-09 19:56:37 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-09 19:56:37 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-09 19:56:37 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-09 19:56:38 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-09 19:56:39 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-09 19:57:21 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-09 19:57:21 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-09 19:57:21 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-09 19:57:21 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-09 19:57:21 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-09 19:57:21 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-09 19:57:21 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-09 19:57:21 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-09 19:57:21 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-09 19:57:22 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-09 19:57:23 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-09 19:58:18 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-09 19:58:18 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-09 19:58:18 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-09 19:58:19 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-09 19:58:19 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-09 19:58:19 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-09 19:58:19 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-09 19:58:19 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-09 19:58:19 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-09 19:58:19 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-09 19:58:20 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
