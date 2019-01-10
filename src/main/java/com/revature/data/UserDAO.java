@@ -5,7 +5,7 @@ import java.util.Set;
 import com.revature.beans.User;
 
 public interface UserDAO {
-	User addUser(User u);
+	Integer addUser(User u);
 	User getUserbyId(int id);
 	User getUserByEmailAndPassword(User u);
 	Set<User>getUsers();

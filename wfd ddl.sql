@@ -67,3 +67,8 @@ CREATE TABLE IngredientList (
     CONSTRAINT FK_IngredientList_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id),
     CONSTRAINT FK_IngredientList_IngredientId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id) 
 );
+
+drop sequence LOGINID_SEQ;
+create sequence LOGINID_SEQ;
+
+insert into login
