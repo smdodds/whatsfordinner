@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.revature.beans.User;
-import com.revature.util.HibernateUtil;
+import com.revature.utils.HibernateUtil;
 
 public class UserHibernate implements UserDAO {
 	private static HibernateUtil hu = HibernateUtil.getInstance();
