@@ -24,7 +24,9 @@ public class UserController {
 	
 	@RequestMapping(value="{id}", method= RequestMethod.GET)
 	public User getUser(int id) {
+		System.out.println("olie");
 		return us.getUserbyId(id);
+		
 	}
 	
 	@RequestMapping(method= RequestMethod.GET)
