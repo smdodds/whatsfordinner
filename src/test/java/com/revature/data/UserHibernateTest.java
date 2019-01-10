@@ -47,6 +47,8 @@ public class UserHibernateTest {
 
 	@Test
 	public void testDeleteUser() {
+		//  TODO
+		// Properly deletes, but fails due to an IndexOutOfBoundsException
 		User toBeDeleted = new User("gg","gg","Gavin","Greif","new@email.com");
 		User expected = ud.getUserByEmailAndPassword(toBeDeleted);
 		toBeDeleted.setId(expected.getId());
