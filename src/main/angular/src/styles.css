@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    margin-right: 15%;
+    margin-left: 15%;
+}
+html {
+    font-size: 1.3rem;
+  }
+
+  .marg{
+    margin-right: 15%;
+    margin-left: 15%;  
+  }
