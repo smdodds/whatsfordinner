@@ -24,7 +24,7 @@ public class Fridge {
 	@GeneratedValue(generator="FRIDGEID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private int userId;
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinTable(name="Fridge_Ingredients",
 			joinColumns=@JoinColumn(name="FridgeId"),
 			inverseJoinColumns=@JoinColumn(name="IngredientId"))
