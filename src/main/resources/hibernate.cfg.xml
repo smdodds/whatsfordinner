@@ -16,6 +16,7 @@
 		
 		<!-- Annotation -->
 		<mapping class="com.revature.beans.User"/>
+		<mapping class="com.revature.beans.Recipe"/>
 		<mapping class="com.revature.beans.Ingredient"/>
 		<mapping class="com.revature.beans.Fridge"/>
 	</session-factory>
