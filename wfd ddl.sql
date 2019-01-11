@@ -27,12 +27,12 @@ CREATE TABLE Login (
     Password varchar2(25) NOT NULL,
     Firstname varchar2(50),
     Lastname varchar2(50),
-    Email varchar2(100)
+    Email varchar2(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE Administrator (
     Id number PRIMARY KEY,
-	CONSTRAINT FK_Administrator_LoginId FOREIGN KEY (Id) REFERENCES Login (Id);
+	CONSTRAINT FK_Administrator_LoginId FOREIGN KEY (Id) REFERENCES Login (Id)
 );
 
 CREATE TABLE Fridge (
@@ -70,5 +70,3 @@ CREATE TABLE IngredientList (
 
 drop sequence LOGINID_SEQ;
 create sequence LOGINID_SEQ;
-
-insert into login
