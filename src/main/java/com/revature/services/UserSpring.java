@@ -13,7 +13,7 @@ public class UserSpring implements UserSevice {
 	@Autowired
 	private UserDAO ud;
 	@Override
-	public User addUser(User u) {
+	public Integer addUser(User u) {
 		return ud.addUser(u);
 	}
 

@@ -1,8 +1,12 @@
 package com.revature.controllers;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,29 +27,31 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="{id}", method= RequestMethod.GET)
-	public User getUser(int id) {
-
-		return us.getUserbyId(id);
+	public User getUser(@PathVariable("id") int id) {
+		return us.getUserbyId(1);
 		
 	}
 	
-	@RequestMapping(method= RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public Set<User> getUsers(){
+		Set<User> u = new HashSet<>();
+		u = us.getUsers();
 		return us.getUsers();
 	}
 	
 	@RequestMapping(method= RequestMethod.POST)
-	public User addUser(User u) {
-		return us.addUser(u);
+	public User addUser(@RequestBody User u) {
+		int id= us.addUser(u);
+		return us.getUserbyId(id);
 	}
 	
-	@RequestMapping(value = "/users/", method= RequestMethod.PUT)
-	public User updateUser(User u) {
+	@RequestMapping(method= RequestMethod.PUT)
+	public User updateUser(@RequestBody User u) {
 		return us.updateUser(u);
 	}
 	
-	@RequestMapping(value= "/users/", method= RequestMethod.DELETE)
-	public void DeleteUser(User u) {
+	@RequestMapping(method= RequestMethod.DELETE)
+	public void DeleteUser(@RequestBody User u) {
 		us.deleteUser(u);
 	}
 }

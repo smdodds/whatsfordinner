@@ -7,21 +7,25 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.User;
 import com.revature.utils.HibernateUtil;
 
+@Component
 public class UserHibernate implements UserDAO {
-	private static HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private HibernateUtil hu;
 
 	@Override
-	public User addUser(User u) {
+	public Integer addUser(User u) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		s.save(u);
+		Integer i = (Integer) s.save(u);
 		tx.commit();
 		s.close();
-		return u;
+		return i;
 	}
 
 	@Override
@@ -39,9 +43,14 @@ public class UserHibernate implements UserDAO {
 		Query<User> q = s.createQuery(query, User.class);
 		q.setParameter("email", u.getEmail());
 		q.setParameter("password", u.getPassword());
-		u = q.list().get(0);
-		s.close();
-		return u;
+		List<User> l = q.list();
+		if(l.isEmpty()) {
+			s.close();
+			return null;
+		} else {
+			s.close();
+			return l.get(0);
+		}
 	}
 
 	@Override

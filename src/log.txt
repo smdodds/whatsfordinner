@@ -64,3 +64,166 @@
 2019-01-09 19:58:19 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
 2019-01-09 19:58:19 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
 2019-01-09 19:58:20 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-10 20:07:17 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:07:18 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:07:18 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:07:18 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:07:18 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:07:18 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:07:18 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:07:18 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:07:18 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:07:19 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:09:33 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:09:33 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:09:33 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:09:33 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:09:33 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:09:33 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:09:33 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:09:33 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:09:33 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:09:34 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:09:34 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-10 20:10:48 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:10:48 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:10:48 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:10:48 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:10:49 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:10:49 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:10:49 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:10:49 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:10:49 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:10:49 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:10:50 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:10:50 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017658) violated
+
+2019-01-10 20:10:50 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:10:50 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:11:42 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:11:42 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017657) violated
+
+2019-01-10 20:11:42 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:11:42 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:12:29 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:12:29 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:12:29 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:12:29 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:12:30 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:12:30 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:12:30 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:12:30 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:12:30 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:12:30 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:12:31 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-10 20:21:42 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:21:42 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:21:42 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:21:42 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:21:42 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:21:43 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:21:43 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:21:43 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:21:43 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:21:43 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:24:48 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:24:48 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:24:48 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:24:49 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:24:49 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:24:49 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:24:49 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:24:49 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:24:49 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:24:49 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:24:50 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-01-10 20:25:30 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:25:30 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:25:30 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:25:30 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:25:30 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:25:30 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:25:30 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:25:30 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:25:30 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:25:31 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:25:48 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:25:48 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:25:48 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:25:48 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:25:48 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:25:48 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:25:48 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:25:48 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:25:48 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:25:49 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:26:35 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:26:35 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:26:35 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:26:35 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:26:35 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:26:35 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:26:35 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:26:35 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:26:35 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:26:36 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017757) violated
+
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017757) violated
+
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017757) violated
+
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017758) violated
+
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 60, SQLState: 61000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00060: deadlock detected while waiting for resource
+
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017758) violated
+
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.LockAcquisitionException: could not execute statement]
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017758) violated
+
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017758) violated
+
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:00 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:00 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017758) violated
+
+2019-01-10 20:27:00 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:00 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2019-01-10 20:27:58 DEBUG logging:109 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-01-10 20:27:58 INFO  Version:45 - HHH000412: Hibernate Core {5.2.12.Final}
+2019-01-10 20:27:58 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-01-10 20:27:58 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-01-10 20:27:58 WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-01-10 20:27:58 INFO  pooling:126 - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+2019-01-10 20:27:58 INFO  pooling:135 - HHH10001001: Connection properties: {user=wfd, password=****}
+2019-01-10 20:27:58 INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2019-01-10 20:27:58 INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 35 (min=1)
+2019-01-10 20:27:59 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2019-01-10 20:27:59 WARN  SqlExceptionHelper:129 - SQL Error: 1, SQLState: 23000
+2019-01-10 20:27:59 ERROR SqlExceptionHelper:131 - ORA-00001: unique constraint (WFD.SYS_C0017758) violated
+
+2019-01-10 20:27:59 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2019-01-10 20:27:59 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
