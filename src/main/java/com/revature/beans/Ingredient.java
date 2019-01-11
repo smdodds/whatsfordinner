@@ -1,10 +1,14 @@
 package com.revature.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,6 +21,8 @@ public class Ingredient {
 	@GeneratedValue(generator="INGREDIENTID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private String name;
+	@ManyToMany(mappedBy = "ingredients")
+    private Set<Recipe> employees = new HashSet<Recipe>();
 	
 	public Ingredient() {
 		super();
