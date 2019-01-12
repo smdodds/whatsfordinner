@@ -19,11 +19,11 @@
    
    	<import resource="beans.xml"/>
  
-   	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+ <!--   	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
    		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
       	<property name="url" value="jdbc:hsqldb:mem:howtodoinjava" />
       	<property name="username" value="sa" />
       	<property name="password" value="" />
-   </bean>
+   </bean> -->
      
 </beans>

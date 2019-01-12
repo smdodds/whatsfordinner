@@ -6,29 +6,26 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Ingredient;
 import com.revature.utils.HibernateUtil;
 
-//@Configuration
 @Component
 public class IngredientHibernate implements IngredientDAO {
 	@Autowired
 	private HibernateUtil hu;
-	//private static HibernateUtil hu = HibernateUtil.getInstance();
 	
-	
-	//@Bean
 	@Override
 	public Ingredient save(Ingredient i) {
 		Session s = hu.getSession();
 		if(getByName(i.getName()) != null) {
+			// cannot save an existing ingredient
+			s.close();
 			return null;
 		}
 		Transaction tx = s.beginTransaction();
+		@SuppressWarnings("unused")
 		int id = (Integer) s.save(i);
 		tx.commit();
 		s.close();
@@ -71,8 +68,15 @@ public class IngredientHibernate implements IngredientDAO {
 	public Ingredient update(Ingredient i) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		s.update(i);
-		tx.commit();
+		try {
+			s.update(i);
+			tx.commit();
+		} catch (Exception e) {
+			// exception logging should happen in LoggingAspect
+			tx.rollback();
+			s.close();
+			return null;
+		}
 		s.close();
 		return i;
 	}
