@@ -79,8 +79,7 @@ public class UserHibernateTest {
 		
 			//Search for those Users
 		Set<User> uList = ud.getUsers();
-		System.out.println("_________________");
-		System.out.println(uList);
+
 		//Delete Database Changes
 		ud.deleteUser(u1);
 		ud.deleteUser(u2);
@@ -136,4 +135,5 @@ public class UserHibernateTest {
 		//Test
 		assertNull(expected);
 	}
+
 }
