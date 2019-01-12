@@ -1,11 +1,12 @@
 package com.revature.controllers;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,42 +17,80 @@ import com.revature.beans.User;
 import com.revature.services.UserSevice;
 
 @RestController
-@RequestMapping(value="/users")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RequestMapping(value = "/users")
 public class UserController {
 	@Autowired
 	private UserSevice us;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public User login(@RequestBody User u) {
-		return us.login(u);
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public User login(@RequestBody User u, HttpSession session) {
+		User sessionUser = (User) session.getAttribute("user");
+		if (sessionUser == null) {
+			u = us.login(u);
+			session.setAttribute("user", u);
+			System.out.println(session.getAttribute("user"));
+			return u;
+		} else {
+			return sessionUser;
+		}
 	}
-	
-	@RequestMapping(value="{id}", method= RequestMethod.GET)
-	public User getUser(@PathVariable("id") int id) {
-		return us.getUserbyId(1);
-		
+
+	@RequestMapping(value = "/login", method = RequestMethod.DELETE)
+	public void logout(HttpSession session) {
+		session.invalidate();
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public Set<User> getUsers(){
-		Set<User> u = new HashSet<>();
-		u = us.getUsers();
-		return us.getUsers();
+
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public User getUser(@PathVariable("id") int id, HttpSession session) {
+		User sessionUser = (User) session.getAttribute("user");
+		if (sessionUser == null) {
+			return null;
+		} else {
+			return us.getUserbyId(1);
+		}
+
 	}
-	
-	@RequestMapping(method= RequestMethod.POST)
-	public User addUser(@RequestBody User u) {
-		int id= us.addUser(u);
-		return us.getUserbyId(id);
+
+	@RequestMapping(method = RequestMethod.GET)
+	public Set<User> getUsers(HttpSession session) {
+		User sessionUser = (User) session.getAttribute("user");
+		if (sessionUser == null) {
+			return null;
+		} else {
+			return us.getUsers();
+		}
 	}
-	
-	@RequestMapping(method= RequestMethod.PUT)
-	public User updateUser(@RequestBody User u) {
-		return us.updateUser(u);
+
+	@RequestMapping(method = RequestMethod.POST)
+	public User addUser(@RequestBody User u, HttpSession session) {
+		User sessionUser = (User) session.getAttribute("user");
+		if (sessionUser == null) {
+			return null;
+		} else {
+			int id = us.addUser(u);
+			return us.getUserbyId(id);
+		}
 	}
-	
-	@RequestMapping(method= RequestMethod.DELETE)
-	public void DeleteUser(@RequestBody User u) {
-		us.deleteUser(u);
+
+	@RequestMapping(method = RequestMethod.PUT)
+	public User updateUser(@RequestBody User u, HttpSession session) {
+		User sessionUser = (User) session.getAttribute("user");
+		if (sessionUser == null) {
+			return null;
+		} else {
+			return us.updateUser(u);
+		}
 	}
+
+	@RequestMapping(method = RequestMethod.DELETE)
+	public void DeleteUser(@RequestBody User u, HttpSession session) {
+		User sessionUser = (User) session.getAttribute("user");
+		if (sessionUser == null) {
+			
+		} else {
+			us.deleteUser(u);
+		}
+	}
+
 }
