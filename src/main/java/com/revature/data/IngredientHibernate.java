@@ -6,21 +6,30 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Ingredient;
-import com.revature.util.HibernateUtil;
+import com.revature.utils.HibernateUtil;
 
+//@Configuration
 @Component
 public class IngredientHibernate implements IngredientDAO {
 	@Autowired
-	private static HibernateUtil hu = HibernateUtil.getInstance();
+	private HibernateUtil hu;
+	//private static HibernateUtil hu = HibernateUtil.getInstance();
 	
+	
+	//@Bean
 	@Override
 	public Ingredient save(Ingredient i) {
 		Session s = hu.getSession();
+		if(getByName(i.getName()) != null) {
+			return null;
+		}
 		Transaction tx = s.beginTransaction();
-		s.save(i);
+		int id = (Integer) s.save(i);
 		tx.commit();
 		s.close();
 		return i;
@@ -50,11 +59,10 @@ public class IngredientHibernate implements IngredientDAO {
 		Query<Ingredient> q = s.createQuery(query, Ingredient.class);
 		q.setParameter("name", name);
 		List<Ingredient> l = q.list();
+		s.close();
 		if(l.isEmpty()) {
-			s.close();
 			return null;
 		} else {
-			s.close();
 			return l.get(0);
 		}
 	}

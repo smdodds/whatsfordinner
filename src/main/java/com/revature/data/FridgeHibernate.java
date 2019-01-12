@@ -9,13 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Fridge;
-import com.revature.util.HibernateUtil;
+import com.revature.utils.HibernateUtil;
 
 @Component
 public class FridgeHibernate implements FridgeDAO {
 	@Autowired
-	private static HibernateUtil hu = HibernateUtil.getInstance();
-	
+	private static HibernateUtil hu;
+	//private static HibernateUtil hu = HibernateUtil.getInstance();
+
 	@Override
 	public Fridge create(Fridge f) {
 		Session s = hu.getSession();
@@ -68,5 +69,4 @@ public class FridgeHibernate implements FridgeDAO {
 		tx.commit();
 		s.close();
 	}
-
 }
