@@ -52,10 +52,10 @@ public class IngredientHibernate implements IngredientDAO {
 	@Override
 	public Ingredient getByName(String name) {
 		Session s = hu.getSession();
-		String query = "from com.revature.beans.Ingredient where NAME=:name";
+		String query = "FROM com.revature.beans.Ingredient WHERE NAME=:name";
 		Query<Ingredient> q = s.createQuery(query, Ingredient.class);
 		q.setParameter("name", name);
-		List<Ingredient> l = q.list();
+		List<Ingredient> l = q.getResultList();
 		s.close();
 		if(l.isEmpty()) {
 			return null;
@@ -89,5 +89,4 @@ public class IngredientHibernate implements IngredientDAO {
 		tx.commit();
 		s.close();
 	}
-
 }

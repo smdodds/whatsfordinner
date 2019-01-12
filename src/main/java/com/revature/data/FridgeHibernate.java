@@ -14,12 +14,16 @@ import com.revature.utils.HibernateUtil;
 @Component
 public class FridgeHibernate implements FridgeDAO {
 	@Autowired
-	private static HibernateUtil hu;
-	//private static HibernateUtil hu = HibernateUtil.getInstance();
+	private HibernateUtil hu;
 
 	@Override
-	public Fridge create(Fridge f) {
+	public Fridge save(Fridge f) {
 		Session s = hu.getSession();
+		if(getById(f.getId()) != null) {
+			// cannot save an existing fridge
+			s.close();
+			return null;
+		}
 		Transaction tx = s.beginTransaction();
 		s.save(f);
 		tx.commit();
@@ -36,17 +40,16 @@ public class FridgeHibernate implements FridgeDAO {
 	}
 
 	@Override
-	public Fridge getByUserId(int id) {
+	public Fridge getByUserId(int userId) {
 		Session s = hu.getSession();
-		String hql = "FROM com.revature.beans WHERE USERID:userId";
-		Query<Fridge> q = s.createQuery(hql, Fridge.class);
-		q.setParameter("userId", id);
+		String query = "FROM com.revature.beans.Fridge WHERE USERID=:userId";
+		Query<Fridge> q = s.createQuery(query, Fridge.class);
+		q.setParameter("userId", userId);
 		List<Fridge> l = q.getResultList();
+		s.close();
 		if(l.isEmpty()) {
-			s.close();
 			return null;
 		} else {
-			s.close();
 			return l.get(0);
 		}
 	}
@@ -55,8 +58,15 @@ public class FridgeHibernate implements FridgeDAO {
 	public Fridge update(Fridge f) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		s.update(f);
-		tx.commit();
+		try {
+			s.update(f);
+			tx.commit();
+		} catch (Exception e) {
+			// exception logging should happen in LoggingAspect
+			tx.rollback();
+			s.close();
+			return null;
+		}
 		s.close();
 		return f;
 	}
