@@ -1,27 +1,31 @@
-<div class="container-fluid mt-5">
-    <div class="form-group id">
-      <input type="text" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="email">
-    </div>
-    <div class="form-group id">
-      <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password" (keyup.enter)="login()">
-    </div>
-    <div class="form-group form-check id">
-      <input type="checkbox" class="form-check-input" id="remember">
-      <label class="form-check-label" for="remember">Remember me</label>
-      <span class="float-right"><a href="#">Forgot password?</a></span>
-    </div>
+<div class="container-fluid mt-4">
+  <div class="id text-center red mb-3" id="rejected" >
+    <span *ngIf="isRejected(); else notRejected">Invalid email or password.</span>
+    <ng-template #notRejected>
+      &nbsp;
+    </ng-template>
+  </div>
+  <div class="form-group id">
+    <input type="text" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="email">
+  </div>
+  <div class="form-group id">
+    <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password"
+      (keyup.enter)="login()">
+  </div>
+  <div class="form-group form-check id">
+    <input type="checkbox" class="form-check-input" id="remember">
+    <label class="form-check-label resfont" for="remember">Remember me</label>
+    <span class="float-right" id="forgot"><a href="#">Forgot password?</a></span>
+  </div>
 
-    <div class="id bg-info p-3 text-center mt-1 mb-1 pointer" (click)="login()">
-      Sign In
-    </div>
-    <div class="id bg-warning p-3 text-center mt-1 pointer">
-      New to whatsfordinner? Join for free!
-    </div>
-    <div class="id text-center mt-1">
-      By signing in, you are agreeing to our <a href="#">Terms of
+  <div class="id bg-info p-3 text-center mt-1 mb-1 pointer" (click)="login()">
+    Sign In
+  </div>
+  <div class="id bg-warning p-3 text-center mt-1 pointer resfont">
+    New to whatsfordinner? Join for free!
+  </div>
+  <div class="id text-center mt-1 resfont">
+    By signing in, you are agreeing to our <a href="#">Terms of
       Service</a> and our <a href="#">Privacy Policy</a>
-    </div>
+  </div>
 </div>
-
-
-

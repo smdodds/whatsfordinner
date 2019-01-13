@@ -17,6 +17,7 @@ private url = this.urlSource.getURL() + '/users/login';
 private headers = new HttpHeaders({'Content-Type': 'application/json'});
 loggedUser : User;
 loggedIn = false;
+rejected = false;
 
   constructor(private urlSource: UrlService, private http: HttpClient) { }
 
@@ -30,8 +31,10 @@ loggedIn = false;
         if(u){
           this.loggedIn = true;
           this.loggedUser = u;
+          this.rejected = false;
           return this.loggedIn;
         }else{
+          this.rejected = true;
           return false;
         }
       }));
@@ -40,6 +43,7 @@ loggedIn = false;
       return this.http.post(this.url, {withCredentials: true}).pipe(
         map(resp =>{
           const u: User = resp as User;
+          this.rejected = false;
           return this.loggedIn;
         })
       );
@@ -51,6 +55,7 @@ loggedIn = false;
       map(success=> {
         this.loggedUser = null;
         this.loggedIn = false;
+        this.rejected = false;
         return success;
       }));
   }
@@ -61,5 +66,9 @@ loggedIn = false;
 
   isloggedIn():boolean{
     return this.loggedIn;
+  }
+
+  isRejected():boolean{
+    return this.rejected;
   }
 }

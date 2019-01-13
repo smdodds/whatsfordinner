@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from "../../shared/services/login.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,11 @@ import { LoginService } from "../../shared/services/login.service";
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  constructor(private loginService : LoginService) { }
+  constructor(private loginService : LoginService,private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.loginService.login(null,null).subscribe();
+  }
 
   isAuth():boolean{
     return this.loginService.isloggedIn();
@@ -21,6 +24,10 @@ export class NavComponent implements OnInit {
 
   logout():void{
     this.loginService.logout().subscribe();
+  }
+
+  goLogin():void{
+    this.router.navigate(['/login']);
   }
 
 }

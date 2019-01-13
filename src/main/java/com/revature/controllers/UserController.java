@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -29,6 +28,7 @@ public class UserController {
 		if (sessionUser == null) {
 			u = us.login(u);
 			session.setAttribute("user", u);
+			session.setMaxInactiveInterval(0);
 			System.out.println(session.getAttribute("user"));
 			return u;
 		} else {
