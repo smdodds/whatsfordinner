@@ -1,0 +1,20 @@
+.id{
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.red{
+    color: red;
+}
+
+@media screen and (min-width: 801px) {
+    #forgot{
+      font-size: 1.15vw;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    #forgot{
+      font-size: 10px;
+    }
+}
