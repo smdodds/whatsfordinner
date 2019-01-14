@@ -31,7 +31,7 @@ CREATE TABLE Login (
     Password varchar2(25) NOT NULL,
     Firstname varchar2(50),
     Lastname varchar2(50),
-    Email varchar2(100)
+    Email varchar2(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE Administrator (

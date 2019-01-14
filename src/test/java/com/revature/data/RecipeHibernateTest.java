@@ -32,23 +32,22 @@ public class RecipeHibernateTest {
 	private Ingredient testingredient3= new Ingredient();
 
 	@Autowired
-	private IngredientDAO test1 = new IngredientHibernate();
+	private IngredientDAO test1;
 
 	@Autowired
-	private RecipeDAO test2 = new RecipeHibernate();
+	private RecipeDAO test2;
 	
-	{
+	@Test
+	public void testAddRecipe(){
+		testingredient1 = (Ingredient) test1.getById(-8);
+		testingredient2 = (Ingredient) test1.getById(-7);
+		testingredient3 = (Ingredient) test1.getById(-6);
+		
 		/*
-		testingredient1.setId(1);
-		testingredient2.setId(2);
-		testingredient3.setId(3);
 		testingredient1.setName("Peanut Butter");
 		testingredient2.setName("Jelly");
 		testingredient3.setName("Bread");
 		*/
-		testingredient1 = test1.getById(-7);
-		testingredient2 = test1.getById(-9);
-		testingredient3 = test1.getById(-8);
 		
 		ingredients.add(testingredient1);
 		ingredients.add(testingredient2);
@@ -57,11 +56,8 @@ public class RecipeHibernateTest {
 		testRecipe.setName("PB and J");
 		testRecipe.setDescription("A nice, tasty sandwich");
 		testRecipe.setIngredients(ingredients);
-	}
-	
-	@Test
-	public void testAddRecipe(){
+		
 		test2.saveRecipe(testRecipe);
-		test2.deleteRecipe(testRecipe);
+		//test2.deleteRecipe(testRecipe);
 	}
 }

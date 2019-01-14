@@ -21,14 +21,30 @@ public class RecipeHibernate implements RecipeDAO{
 
 	@Autowired
 	private HibernateUtil hu;
-	
+
+	@Override
+	public Recipe saveRecipe(Recipe newRecipe) {
+
+		Session s = hu.getSession();
+		if(getRecipeById(newRecipe.getId()) != null) {
+			s.close();
+			return null;
+		}
+		Transaction tx = s.beginTransaction();
+		
+		s.save(newRecipe);
+		
+		tx.commit();
+		s.close();
+		return newRecipe;
+	}
+
 	@Override
 	public Set<Recipe> getRecipes() {
 		
 		Session s = hu.getSession();
 		
-		String query = "from com.revature.beans.Recipe";
-		Query<Recipe> q = s.createQuery(query,Recipe.class);
+		Query<Recipe> q = s.createQuery("from com.revature.beans.Recipe",Recipe.class);
 		List<Recipe> rList = q.getResultList();
 		 
 		s.close();
@@ -38,32 +54,46 @@ public class RecipeHibernate implements RecipeDAO{
 
 	@Override
 	public Recipe getRecipeById(int id) {
-		
-		return null;
+		Session s = hu.getSession();
+		Recipe r = s.get(Recipe.class, id);
+		s.close();
+		return r;
 	}
 
 	@Override
-	public void saveRecipe(Recipe newRecipe) {
+	public Recipe getRecipeByName(String name) {
+		Session s = hu.getSession();
+		
+		Query<Recipe> q = s.createQuery("from com.revature.beans.Recipe where NAME=name:",Recipe.class);
+		List<Recipe> rList = q.getResultList();
+		 
+		s.close();
+
+		if(rList.isEmpty()) {
+			return null;
+		}
+		else {
+			return rList.get(0);
+		}
+	}
+
+	@Override
+	public Recipe updateRecipe(Recipe updateRecipe) {
 
 		Session s = hu.getSession();
 		
 		Transaction tx = s.beginTransaction();
 		
-		s.save(newRecipe);
-		
-		tx.commit();
-		s.close();
-	}
-
-	@Override
-	public void updateRecipe(Recipe updateRecipe) {
-
-		Session s = hu.getSession();
-		
-		Transaction tx = s.beginTransaction();
-		s.update(updateRecipe);
-		tx.commit();
-		s.close();
+		try{
+			s.update(updateRecipe);
+			tx.commit();
+		}
+		catch(Exception e){
+			tx.rollback();
+			s.close();
+			return null;
+		}
+		return updateRecipe;
 	}
 
 	@Override
@@ -76,11 +106,4 @@ public class RecipeHibernate implements RecipeDAO{
 		tx.commit();
 		s.close();
 	}
-
-	@Override
-	public void getRecipeIngredients(Recipe getIngredients) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
