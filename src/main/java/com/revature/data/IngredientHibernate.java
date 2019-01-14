@@ -9,18 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Ingredient;
-import com.revature.util.HibernateUtil;
+import com.revature.utils.HibernateUtil;
 
 @Component
 public class IngredientHibernate implements IngredientDAO {
 	@Autowired
-	private static HibernateUtil hu = HibernateUtil.getInstance();
+	private HibernateUtil hu;
 	
 	@Override
 	public Ingredient save(Ingredient i) {
 		Session s = hu.getSession();
+		if(getByName(i.getName()) != null) {
+			// cannot save an existing ingredient
+			s.close();
+			return null;
+		}
 		Transaction tx = s.beginTransaction();
-		s.save(i);
+		@SuppressWarnings("unused")
+		int id = (Integer) s.save(i);
 		tx.commit();
 		s.close();
 		return i;
@@ -46,15 +52,14 @@ public class IngredientHibernate implements IngredientDAO {
 	@Override
 	public Ingredient getByName(String name) {
 		Session s = hu.getSession();
-		String query = "from com.revature.beans.Ingredient where NAME=:name";
+		String query = "FROM com.revature.beans.Ingredient WHERE NAME=:name";
 		Query<Ingredient> q = s.createQuery(query, Ingredient.class);
 		q.setParameter("name", name);
-		List<Ingredient> l = q.list();
+		List<Ingredient> l = q.getResultList();
+		s.close();
 		if(l.isEmpty()) {
-			s.close();
 			return null;
 		} else {
-			s.close();
 			return l.get(0);
 		}
 	}
@@ -63,8 +68,15 @@ public class IngredientHibernate implements IngredientDAO {
 	public Ingredient update(Ingredient i) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		s.update(i);
-		tx.commit();
+		try {
+			s.update(i);
+			tx.commit();
+		} catch (Exception e) {
+			// exception logging should happen in LoggingAspect
+			tx.rollback();
+			s.close();
+			return null;
+		}
 		s.close();
 		return i;
 	}
@@ -77,5 +89,4 @@ public class IngredientHibernate implements IngredientDAO {
 		tx.commit();
 		s.close();
 	}
-
 }
