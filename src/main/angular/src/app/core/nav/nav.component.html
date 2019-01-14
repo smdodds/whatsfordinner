@@ -1,0 +1,66 @@
+<div bg-light class="marg">
+  <div class="container-fluid text-center">
+    <img src="../assets/dinner.jpg" class="img-fluid">
+  </div>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="../assets/logo.png" height="30" width="30" class="d-inline-block align-top" alt="">
+        <span id="sitename">whatsfordinner?</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <div class="input-group mt-2">
+                <input type="text" class="form-control ml-1 resfont" placeholder="" id="search">
+                <div class="input-group-lg">
+                  <button class="btn btn-outline-secondary resfont" type="button">Search by ingredient</button>
+                </div>
+                <div class="p-2 pointer resfont">
+                    <i class="fas fa-search"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 ml-4">
+            <div class="m-1 pointer resfont">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="m-1 pointer resfont">
+              <i class="fas fa-bell"></i>
+            </div>
+            <ng-container *ngIf="!isAuth(); else displayUser">
+              <div class="input-group pointer" (click)="goLogin()">
+                <div class="input-group-prepend pl-4  float-center">
+                  <span class="input-group-text resfont"><i class="fas fa-user"></i></span>
+                  <span class="input-group-text resfont">Login</span>
+                </div>
+              </div>
+            </ng-container>
+          </form>
+      </div>
+    </nav>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
+
+<ng-template #displayUser>
+  <div class="input-group float-center">
+    <div class="input-group-prepend p-3">
+      <span class="input-group-text resfont"><i class="fas fa-user"></i></span>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="userMenu" data-toggle="dropdown">
+        {{getUserName()}}
+      </button>
+      <div class="dropdown-menu resfont" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item resfont" href="#">View Profile</a>
+        <a class="dropdown-item resfont" href="#">Another action</a>
+        <div class="dropdown-item resfont" (click)="logout()">Logout</div>
+      </div>
+    </div>
+  </div>
+</ng-template>

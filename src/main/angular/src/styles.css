@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    margin-right: 15%;
+    margin-left: 15%;
+}
+.marg{
+    margin-right: 15%;
+    margin-left: 15%;  
+  }
+
+  .pointer{
+    cursor: pointer; 
+ }
+
+ @media screen and (min-width: 801px) {
+    .resfont{
+      font-size: 1.15vw;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .resfont{
+      font-size: 15px;
+    }
+  }
