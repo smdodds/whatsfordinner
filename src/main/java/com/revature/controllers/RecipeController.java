@@ -30,7 +30,7 @@ public class RecipeController {
 		if (u == null) {
 			return null;
 		} else {
-		return rd.getRecipes();	
+		return rd.getAll();	
 		}	
 	}
 	
@@ -41,7 +41,7 @@ public class RecipeController {
 		if (u == null) {
 			return null;
 		} else {
-		return rd.getRecipeById(id);		
+		return rd.getById(id);		
 		}
 	}
 	
@@ -52,7 +52,7 @@ public class RecipeController {
 		if (u == null) {
 			return null;
 		} else {
-		return rd.saveRecipe(newRecipe);
+		return rd.save(newRecipe);
 		}
 	}
 	@RequestMapping(method=RequestMethod.PUT)
@@ -62,7 +62,7 @@ public class RecipeController {
 		if (u == null) {
 			return null;
 		} else {
-			return rd.updateRecipe(putRecipe);
+			return rd.update(putRecipe);
 		}
 	}
 	@RequestMapping(method=RequestMethod.DELETE)
@@ -70,7 +70,7 @@ public class RecipeController {
 
 		User u = (User) s.getAttribute("user");
 		if (u != null) {
-		rd.deleteRecipe(deleteRecipe);
+		rd.delete(deleteRecipe);
 		}
 	}
 }

@@ -57,7 +57,7 @@ public class RecipeHibernateTest {
 		testRecipe.setDescription("A nice, tasty sandwich");
 		testRecipe.setIngredients(ingredients);
 		
-		test2.saveRecipe(testRecipe);
+		test2.save(testRecipe);
 		//test2.deleteRecipe(testRecipe);
 	}
 }

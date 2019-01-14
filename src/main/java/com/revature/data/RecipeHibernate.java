@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,24 +22,24 @@ public class RecipeHibernate implements RecipeDAO{
 	private HibernateUtil hu;
 
 	@Override
-	public Recipe saveRecipe(Recipe newRecipe) {
+	public Recipe save(Recipe r) {
 
 		Session s = hu.getSession();
-		if(getRecipeById(newRecipe.getId()) != null) {
+		if(getById(r.getId()) != null) {
 			s.close();
 			return null;
 		}
 		Transaction tx = s.beginTransaction();
 		
-		s.save(newRecipe);
+		s.save(r);
 		
 		tx.commit();
 		s.close();
-		return newRecipe;
+		return r;
 	}
 
 	@Override
-	public Set<Recipe> getRecipes() {
+	public Set<Recipe> getAll() {
 		
 		Session s = hu.getSession();
 		
@@ -53,7 +52,7 @@ public class RecipeHibernate implements RecipeDAO{
 	}
 
 	@Override
-	public Recipe getRecipeById(int id) {
+	public Recipe getById(int id) {
 		Session s = hu.getSession();
 		Recipe r = s.get(Recipe.class, id);
 		s.close();
@@ -61,7 +60,7 @@ public class RecipeHibernate implements RecipeDAO{
 	}
 
 	@Override
-	public Recipe getRecipeByName(String name) {
+	public Recipe getByName(String name) {
 		Session s = hu.getSession();
 		
 		Query<Recipe> q = s.createQuery("from com.revature.beans.Recipe where NAME=name:",Recipe.class);
@@ -78,14 +77,14 @@ public class RecipeHibernate implements RecipeDAO{
 	}
 
 	@Override
-	public Recipe updateRecipe(Recipe updateRecipe) {
+	public Recipe update(Recipe r) {
 
 		Session s = hu.getSession();
 		
 		Transaction tx = s.beginTransaction();
 		
 		try{
-			s.update(updateRecipe);
+			s.update(r);
 			tx.commit();
 		}
 		catch(Exception e){
@@ -93,16 +92,16 @@ public class RecipeHibernate implements RecipeDAO{
 			s.close();
 			return null;
 		}
-		return updateRecipe;
+		return r;
 	}
 
 	@Override
-	public void deleteRecipe(Recipe deleterecipe) {
+	public void delete(Recipe r) {
 
 		Session s = hu.getSession();
 		
 		Transaction tx = s.beginTransaction();
-		s.delete(deleterecipe);
+		s.delete(r);
 		tx.commit();
 		s.close();
 	}
