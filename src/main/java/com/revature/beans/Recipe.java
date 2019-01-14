@@ -33,6 +33,12 @@ public class Recipe {
     )
     Set<Ingredient> ingredients = new HashSet<Ingredient>();
 	
+	public Set<Ingredient> getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(Set<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
 	public Recipe() {
 		super();
 	}
@@ -55,11 +61,17 @@ public class Recipe {
 		this.description = description;
 	}
 	@Override
+	public String toString() {
+		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + ", ingredients=" + ingredients
+				+ "]";
+	}
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -79,15 +91,16 @@ public class Recipe {
 			return false;
 		if (id != other.id)
 			return false;
+		if (ingredients == null) {
+			if (other.ingredients != null)
+				return false;
+		} else if (!ingredients.equals(other.ingredients))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
-	}
-	@Override
-	public String toString() {
-		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + "]";
 	}
 }

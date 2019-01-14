@@ -43,7 +43,7 @@ public class RecipeHibernate implements RecipeDAO{
 	}
 
 	@Override
-	public void addRecipe(Recipe newRecipe) {
+	public void saveRecipe(Recipe newRecipe) {
 
 		Session s = hu.getSession();
 		
@@ -75,6 +75,12 @@ public class RecipeHibernate implements RecipeDAO{
 		s.delete(deleterecipe);
 		tx.commit();
 		s.close();
+	}
+
+	@Override
+	public void getRecipeIngredients(Recipe getIngredients) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

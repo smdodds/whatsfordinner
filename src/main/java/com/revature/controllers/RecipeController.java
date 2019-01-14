@@ -34,7 +34,7 @@ public class RecipeController {
 	@RequestMapping(method=RequestMethod.POST)
 	public Set<Recipe> createRecipe(@RequestBody Recipe newRecipe) {
 		
-		rd.addRecipe(newRecipe);
+		rd.saveRecipe(newRecipe);
 		
 		return rd.getRecipes();
 	}
