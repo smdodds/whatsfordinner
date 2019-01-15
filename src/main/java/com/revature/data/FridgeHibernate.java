@@ -35,11 +35,12 @@ public class FridgeHibernate implements FridgeDAO {
 	public Fridge getById(int id) {
 		Session s = hu.getSession();
 		Fridge f = s.get(Fridge.class, id);
+		System.out.println(id + " " + f);
 		s.close();
 		return f;
 	}
 
-	@Override
+	/*@Override
 	public Fridge getByUserId(int userId) {
 		Session s = hu.getSession();
 		String query = "FROM com.revature.beans.Fridge WHERE USERID=:userId";
@@ -52,7 +53,7 @@ public class FridgeHibernate implements FridgeDAO {
 		} else {
 			return l.get(0);
 		}
-	}
+	}*/
 
 	@Override
 	public Fridge update(Fridge f) {

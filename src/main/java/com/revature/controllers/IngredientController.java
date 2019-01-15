@@ -25,34 +25,19 @@ public class IngredientController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Ingredient> getAll(HttpSession s) {
-		User u = (User) s.getAttribute("user");
-		if (u == null) {
-			return null;
-		} else {
-			return is.getAll();
-		}
+		return is.getAll();
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	public Ingredient getById(@PathVariable("id") int id, HttpSession s) {
-		User u = (User) s.getAttribute("user");
-		if (u == null) {
-			return null;
-		} else {
-			return is.getById(id);
-		}
+		return is.getById(id);
 	}
 
-	@RequestMapping(value="{name}", method=RequestMethod.GET)
+/*	@RequestMapping(value="{name}", method=RequestMethod.GET)
 	public Ingredient getById(@PathVariable("name") String name, HttpSession s) {
-		User u = (User) s.getAttribute("user");
-		if (u == null) {
-			return null;
-		} else {
-			return is.getByName(name);
-		}
-	}
-
+		return is.getByName(name);
+	}*/
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public Ingredient save(@RequestBody Ingredient i, HttpSession s) {
 		User u = (User) s.getAttribute("user");

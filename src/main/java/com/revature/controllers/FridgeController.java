@@ -31,7 +31,7 @@ public class FridgeController {
 		}
 	}
 
-	@RequestMapping(value="{name}", method=RequestMethod.GET)
+/*	@RequestMapping(value="{userId}", method=RequestMethod.GET)
 	public Fridge getByUserId(@PathVariable("userId") int userId, HttpSession s) {
 		User u = (User) s.getAttribute("user");
 		if (u == null) {
@@ -39,7 +39,7 @@ public class FridgeController {
 		} else {
 			return fs.getByUserId(userId);
 		}
-	}
+	}*/
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public Fridge save(@RequestBody Fridge f, HttpSession s) {

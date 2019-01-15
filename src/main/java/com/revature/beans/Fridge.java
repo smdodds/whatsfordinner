@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Fridge {
 	@Id
 	@Column(name="Id")
-	@SequenceGenerator(name="FRIDGEID_SEQ", sequenceName="FRIDGEID_SEQ")
+	@SequenceGenerator(name="FRIDGEID_SEQ", sequenceName="FRIDGEID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="FRIDGEID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private int userId;

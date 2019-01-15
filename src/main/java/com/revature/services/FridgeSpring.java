@@ -21,10 +21,10 @@ public class FridgeSpring implements FridgeService {
 		return fd.getById(id);
 	}
 
-	@Override
+/*	@Override
 	public Fridge getByUserId(int userId) {
 		return fd.getByUserId(userId);
-	}
+	}*/
 
 	@Override
 	public Fridge update(Fridge f) {
