@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 
 import {User} from '../classes/user'
 import { UrlService } from './url.service';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 @Injectable({
