@@ -1,0 +1,87 @@
+<div class="container-fluid mt-5">
+    <div class="jumbotron jumbotron-fluid bg-dk px-5 rounded border border-dark">
+        <div class="row bg-i">
+            <div class="col-7 ">
+                <div class="container text-center rounded border-0 border-dark">
+                    <h1 class="display-4" id="name">{{recipe.name}}</h1>
+                    <p><span id="numreviews"></span>reviews | <span id="nummade"></span>made it</p>
+
+                </div>
+                <div>
+                    <p class="lead">Recipe by:<span id="username"></span></p>
+                    <p id="desc">{{recipe.description}}
+                    </p>
+                </div>
+                <div>
+                    <table class="table ml-3">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center pointer">
+                                    <div>
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    Save
+                                </th>
+                                <th scope="col" class="text-center pointer">
+                                    <div>
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    Made It!
+                                </th>
+                                <th scope="col" class="text-center pointer">
+                                    <div>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    Rate
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="col-5 bg-dk">
+                <img src="https://amp.businessinsider.com/images/5a7dc169d03072af008b4bf2-750-562.jpg" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-8">
+            <h2>Directions</h2>
+            <div>
+                <table class="table ml-3">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center pointer">
+                                <div class="row">
+                                    <div>
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        Prep: <span id="prep">20 m</span>
+                                    </div>
+                                </div>
+                            </th>
+                            <th scope="col" class="text-center pointer">
+                                Cook: <span id="cook">30 m</span>
+                            </th>
+                            <th scope="col" class="text-center pointer">
+                                Ready In: <span id="cook">30 m</span>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="direction">
+        
+            </div>
+        </div>
+        <div class="col-3 ml-5">
+            <h3>Ingredients</h3>
+            <ul>
+               <li *ngFor="let ingredient of recipe.ingredients">
+                   {{ingredient.name}}
+               </li>
+            </ul>
+        </div>
+    </div>
+</div>

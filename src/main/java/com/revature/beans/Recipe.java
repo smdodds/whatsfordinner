@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 @Entity
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @Table(name="Recipe")
 public class Recipe {
 	@Id
@@ -25,7 +29,7 @@ public class Recipe {
 	private int id;
 	private String name;
 	private String description;
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
         name = "IngredientList", 
         joinColumns = { @JoinColumn(name = "RecipeId") }, 
