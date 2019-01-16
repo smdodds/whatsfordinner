@@ -32,6 +32,11 @@ export class LoginformComponent implements OnInit {
     
   }
 
+  create(): void{
+    console.log('create profile clicked');
+    this.router.navigate(['/createprofile'])
+  }
+
   isRejected():boolean{
     return this.loginService.isRejected();
   }

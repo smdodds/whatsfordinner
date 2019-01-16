@@ -1,0 +1,26 @@
+<div class="container-fluid mt-4">
+  <form>
+      <div class="form-group">
+      <label for="firstname">First Name:</label>
+      <input type="text" class="form-control" id="firstname" placeholder="Enter first name" [(ngModel)]="firstname" required>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name:</label>
+      <input type="text" class="form-control" id="lastname" placeholder="Enter last name" [(ngModel)]="lastname" required>
+    </div>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter username" [(ngModel)]="username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password" [(ngModel)]="password" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="email" required>
+    </div>
+      <button type="submit" class="btn btn-primary float-left" (click)='createprofile()'>Submit</button>
+      <button type="reset" class="btn btn-danger float-right" (click)='cancel()'>Cancel</button>
+  </form>
+</div>
