@@ -22,10 +22,18 @@ export class FridgeService {
         this.fridge = f;
         return this.fridge;
        }))
-  };
+  }
 
   save(f: Fridge) {
 
-  };
+  }
+
+  update(f: Fridge): Observable<Fridge> {
+    return this.http.put(this.url, JSON.stringify(f), {headers: this.headers, withCredentials:true})
+    .pipe(map(resp => {
+      this.fridge = resp as Fridge;
+      return this.fridge;
+    }))
+  }
 
 }

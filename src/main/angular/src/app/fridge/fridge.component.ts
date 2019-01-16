@@ -22,20 +22,34 @@ export class FridgeComponent implements OnInit {
     private loginService: LoginService ) { }
 
   ngOnInit() {
-    this.fridgeService.getByUserId(this.loginService.getUser().id).subscribe(resp => {
+     // get the user's fridge
+     this.fridgeService.getByUserId(this.loginService.getUser().id).subscribe(resp => {
       this.fridge = resp;
       console.log(this.fridge);
     });
+
+    // get all ingredients, print them to screen
     this.ingredientService.getAll().subscribe(resp => {
       this.ingredients = resp;
-      console.log(this.ingredients);
 
+      // controller for ingredients array, so checked items can be tracked
       const controls = this.ingredients.map(c => new FormControl(false));
-
       this.form = this.formBuilder.group({
         ingredients: new FormArray(controls)
       });
     });
   }
 
+  // submit updated fridge with selected ingredients
+  submit() {
+    const selectedIngredientIds = this.form.value.ingredients
+      .map((v, i) => v ? this.ingredients[i] : null)
+      .filter(v => v !== null);
+
+    this.fridge.ingredients = selectedIngredientIds
+    this.fridgeService.update(this.fridge).subscribe(resp => {
+      this.fridge = resp;
+    });
+    console.log(this.fridge);
+  }
 }
