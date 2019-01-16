@@ -61,10 +61,12 @@ public class RecipeHibernate implements RecipeDAO{
 	}
 
 	@Override
-	public Recipe getRecipeByName(String name) {
+	public List<Recipe> getRecipeByName(String name) {
 		Session s = hu.getSession();
 		
-		Query<Recipe> q = s.createQuery("from com.revature.beans.Recipe where NAME=name:",Recipe.class);
+		Query<Recipe> q = s.createQuery("from com.revature.beans.Recipe where upper(NAME) like '%' || :name || '%' ",Recipe.class);
+		name = name.toUpperCase();
+		q.setParameter("name", name);
 		List<Recipe> rList = q.getResultList();
 		 
 		s.close();
@@ -73,7 +75,7 @@ public class RecipeHibernate implements RecipeDAO{
 			return null;
 		}
 		else {
-			return rList.get(0);
+			return rList;
 		}
 	}
 

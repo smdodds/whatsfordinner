@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FullRecipeComponent } from './recipe/full-recipe/full-recipe.component';
+import { SearchRecipeComponent } from './recipe/search-recipe/search-recipe.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FullRecipeComponent } from './recipe/full-recipe/full-recipe.component'
     LoginformComponent,
     NavComponent,
     HomeComponent,
-    FullRecipeComponent
+    FullRecipeComponent,
+    SearchRecipeComponent
   ],
   imports: [
     BrowserModule,

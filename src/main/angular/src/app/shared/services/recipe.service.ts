@@ -13,6 +13,7 @@ import { Recipe } from '../classes/recipe'
 export class RecipeService {
   private url = this.urlSource.getURL() + '/recipes';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  
   constructor(private urlSource: UrlService, private http: HttpClient) { }
 
   getRecipe(id : number):Observable<Recipe>{
@@ -20,6 +21,15 @@ export class RecipeService {
       resp => { 
         const r:Recipe = resp as Recipe;
         return r;
-       }))
-  };
+       }));
+  }
+
+  searchRecipe(term: String):Observable<Array<Recipe>>{
+    return this.http.get(this.url+ '/search?term=' + term,{withCredentials: true}).pipe(map(
+      resp =>{
+        const rArray:Array<Recipe>= resp as Array<Recipe>;
+        return rArray;
+      }
+    ));
+  }
 }
