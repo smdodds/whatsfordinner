@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from "../../shared/services/login.service";
-import { FridgeService } from "../../shared/services/fridge.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   constructor(private loginService: LoginService, 
-    private fridgeService: FridgeService,
     private router: Router) { }
 
   ngOnInit() {
@@ -34,9 +32,7 @@ export class NavComponent implements OnInit {
   }
 
   goToFridge():void{
-    //var f = (this.fridgeService.getByUserId(1).subscribe());
     this.router.navigate(['/fridge'])
-    
   }
 
 }

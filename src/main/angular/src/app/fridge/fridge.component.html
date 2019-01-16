@@ -1,3 +1,18 @@
 <p>
   fridge works!
 </p>
+
+
+<ng-container *ngFor="let element of ingredients">
+  <label><input type="checkbox"> {{element.name}}</label><br>
+</ng-container>
+<br>
+
+<!-- TODO: get form version working -->
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <label formArrayName="ingredients" *ngFor="let ingredient of form.controls.ingredients.controls; let i = index">
+        <input type="checkbox" [formControlName]="i"> 
+      {{ingredients[i].name}}
+    </label>
+  <button>submit</button>
+</form>

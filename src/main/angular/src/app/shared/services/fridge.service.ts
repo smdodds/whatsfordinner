@@ -20,7 +20,6 @@ export class FridgeService {
     .pipe(map(resp => { 
         const f:Fridge = resp as Fridge;
         this.fridge = f;
-        console.log(this.fridge);
         return this.fridge;
        }))
   };
