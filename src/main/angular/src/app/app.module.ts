@@ -12,13 +12,15 @@ import { LoginService } from './shared/services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { CreateRecipeComponent } from './createrecipe/createrecipe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginformComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    CreateRecipeComponent
   ],
   imports: [
     BrowserModule,

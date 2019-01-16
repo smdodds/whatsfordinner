@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Recipe;
 import com.revature.beans.User;
-import com.revature.data.RecipeDAO;
+import com.revature.services.RecipeService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping(value="/recipe")
 public class RecipeController {
 	@Autowired
-	private RecipeDAO rd;
+	private RecipeService rd;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public Set<Recipe> getAllRecipes(HttpSession s) {
