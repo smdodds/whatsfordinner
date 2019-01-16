@@ -34,7 +34,7 @@ public class IngredientController {
 	}
 
 /*	@RequestMapping(value="{name}", method=RequestMethod.GET)
-	public Ingredient getById(@PathVariable("name") String name, HttpSession s) {
+	public Ingredient getById(@QueryParam("name") String name, HttpSession s) {
 		return is.getByName(name);
 	}*/
 	

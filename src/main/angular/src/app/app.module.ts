@@ -12,13 +12,16 @@ import { LoginService } from './shared/services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { FridgeService } from './shared/services/fridge.service';
+import { FridgeComponent } from './fridge/fridge.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginformComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    FridgeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,10 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    FridgeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
