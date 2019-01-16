@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  constructor(private loginService : LoginService,private router: Router) { }
+  constructor(private loginService: LoginService, 
+    private router: Router) { }
 
   ngOnInit() {
     this.loginService.login(null,null).subscribe();
@@ -28,6 +29,10 @@ export class NavComponent implements OnInit {
 
   goLogin():void{
     this.router.navigate(['/login']);
+  }
+
+  goToFridge():void{
+    this.router.navigate(['/fridge'])
   }
 
 }

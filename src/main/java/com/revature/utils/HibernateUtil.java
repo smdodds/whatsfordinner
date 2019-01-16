@@ -14,7 +14,7 @@ public class HibernateUtil {
 	private static HibernateUtil hu;
 	private static SessionFactory sessionFactory;
 	
-	private HibernateUtil() {
+	public HibernateUtil() {
 		super();
 	}
 	
