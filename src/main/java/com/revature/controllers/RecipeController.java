@@ -19,7 +19,7 @@ import com.revature.services.RecipeService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
-@RequestMapping(value="/recipe")
+@RequestMapping(value="/recipes")
 public class RecipeController {
 	@Autowired
 	private RecipeService rd;
