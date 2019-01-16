@@ -4,13 +4,8 @@
 	<session-factory>
 		<!-- Configure our database -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-<<<<<<< HEAD
- 		<property name="hibernate.connection.url">jdbc:oracle:thin:@wvu-nov27-1811.cfgrpbt7qtnx.us-east-2.rds.amazonaws.com:1521:ORCL</property>
- 		<!-- for running on a local server, instead of the RDS -->
-=======
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@wvu-nov27-1811.cfgrpbt7qtnx.us-east-2.rds.amazonaws.com:1521:ORCL</property>
 		<!-- for running on a local server, instead of the RDS -->
->>>>>>> cca5d505791d6bfe68b2b942c97fe91cad25869c
 		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property> -->
 		<property name="hibernate.connection.username">wfd</property>
 		<property name="hibernate.connection.password">p4ssw0rd</property>

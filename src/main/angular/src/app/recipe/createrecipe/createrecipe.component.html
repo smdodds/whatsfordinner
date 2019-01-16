@@ -1,7 +1,12 @@
 <div>
     <input type="text" placeholder="Name" id="name"><br>
-
-    <div id="ingredientlist"></div>
+    
+    <table>
+        <tr *ngFor="let ingredient of ingredients" >
+            <input type='checkbox' value={{ingredient.id}}>
+            {{ingredient.name}}
+        </tr>
+    </table>
 
     <input type="text" placeholder="Description" id="description"><br>
 
