@@ -1,11 +1,19 @@
 <div class="container-fluid m-1">
 
-  
   <form [formGroup]="form" (ngSubmit)="submit()">
-      <label formArrayName="ingredients" *ngFor="let ingredient of form.controls.ingredients.controls; let i = index">
-          <input type="checkbox" [formControlName]="i"> 
-        {{ingredients[i].name}}
-      </label>
+    <table class="table">
+      <tbody>
+        <label formArrayName="ingredients" *ngFor="let ingredient of form.controls.ingredients.controls; let i = index">
+          <tr *ngIf="i%3===0"></tr>
+          <td>
+            <input type="checkbox" [formControlName]="i">
+            {{ingredients[i].name}}
+          </td>
+        </label>
+      </tbody>
+    </table>
     <button>submit</button>
   </form>
+
+
 </div>
