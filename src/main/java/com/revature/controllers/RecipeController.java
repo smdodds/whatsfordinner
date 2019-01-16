@@ -1,8 +1,10 @@
 package com.revature.controllers;
 
 
+import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,23 +28,17 @@ public class RecipeController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public Set<Recipe> getAllRecipes(HttpSession s) {
-		User u = (User) s.getAttribute("user");
-		if (u == null) {
-			return null;
-		} else {
-		return rd.getAll();	
-		}	
+		return rd.getRecipes();	
 	}
 	
 	@RequestMapping(value="{id}",method=RequestMethod.GET)
 	public Recipe getRecipeById(@PathVariable("id") int id, HttpSession s) {
-
-		User u = (User) s.getAttribute("user");
-		if (u == null) {
-			return null;
-		} else {
-		return rd.getById(id);		
-		}
+		return rd.getRecipeById(id);		
+	}
+	
+	@RequestMapping(value="/search",method=RequestMethod.GET)
+	public List<Recipe> getRecipeByName(HttpServletRequest req) {
+		return rd.getRecipeByName(req.getParameter("term"));		
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)

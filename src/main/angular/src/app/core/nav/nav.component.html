@@ -13,40 +13,51 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <div class="input-group mt-2">
-                <input type="text" class="form-control ml-1 resfont" placeholder="" id="search">
-                <div class="input-group-lg">
-                  <button class="btn btn-outline-secondary resfont" type="button">Search by ingredient</button>
-                </div>
-                <div class="p-2 pointer resfont">
-                    <i class="fas fa-search"></i>
-                </div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <div class="input-group mt-2">
+                <div class="dropdown">
+                    <input class="dropdown-toggle border text-left mousetext input-group input" type="text" id="search" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false" (input)="search()" (keyup.enter)="navSearch()" [(ngModel)]="term">
+                    <div class="dropdown-menu" aria-labelledby="search">
+                      <ng-container *ngFor="let recipe of searchHelp; let i=index">
+                        <span class="dropdown-item pointer" *ngIf="i<5" (click)="fill(recipe.name)">{{recipe.name}}</span>
+                      </ng-container>
+                    </div>
+                  </div>
+              <div class="input-group-lg">
+                <button class="btn btn-outline-secondary" type="button">Search by ingredient</button>
               </div>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0 ml-4">
-            <div class="m-1 pointer resfont">
-              <i class="fas fa-heart"></i>
-            </div>
-            <div class="m-1 pointer resfont">
-              <i class="fas fa-bell"></i>
-            </div>
-            <ng-container *ngIf="!isAuth(); else displayUser">
-              <div class="input-group pointer" (click)="goLogin()">
-                <div class="input-group-prepend pl-4  float-center">
-                  <span class="input-group-text resfont"><i class="fas fa-user"></i></span>
-                  <span class="input-group-text resfont">Login</span>
-                  
-                </div>
+              <div class="p-2 pointer resfont" (click)="navSearch()">
+                <i class="fas fa-search"></i>
               </div>
-            </ng-container>
-          </form>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ml-4">
+          <div class="m-1 pointer resfont">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div class="m-1 pointer resfont">
+            <i class="fas fa-bell"></i>
+          </div>
+          <ng-container *ngIf="!isAuth(); else displayUser">
+            <div class="input-group pointer" (click)="goLogin()">
+              <div class="input-group-prepend pl-4  float-center">
+                <span class="input-group-text resfont"><i class="fas fa-user"></i></span>
+                <span class="input-group-text resfont">Login</span>
+
+              </div>
+            </div>
+          </ng-container>
+        </form>
       </div>
     </nav>
   </div>
-  
+
+
+
+
   <router-outlet></router-outlet>
 </div>
 
