@@ -21,7 +21,7 @@ public class FridgeController {
 	@Autowired
 	private FridgeService fs;
 	
-	@RequestMapping(value="{id}", method=RequestMethod.GET)
+/*	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	public Fridge getById(@PathVariable("id") int id, HttpSession s) {
 		User u = (User) s.getAttribute("user");
 		if (u == null) {
@@ -29,9 +29,9 @@ public class FridgeController {
 		} else {
 			return fs.getById(id);
 		}
-	}
+	}*/
 
-	@RequestMapping(value="{name}", method=RequestMethod.GET)
+	@RequestMapping(value="{userId}", method=RequestMethod.GET)
 	public Fridge getByUserId(@PathVariable("userId") int userId, HttpSession s) {
 		User u = (User) s.getAttribute("user");
 		if (u == null) {

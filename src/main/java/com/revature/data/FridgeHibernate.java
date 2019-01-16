@@ -35,6 +35,7 @@ public class FridgeHibernate implements FridgeDAO {
 	public Fridge getById(int id) {
 		Session s = hu.getSession();
 		Fridge f = s.get(Fridge.class, id);
+		System.out.println(id + " " + f);
 		s.close();
 		return f;
 	}

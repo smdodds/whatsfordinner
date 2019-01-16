@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Ingredient {
 	@Id
 	@Column(name="Id")
-	@SequenceGenerator(name="INGREDIENTID_SEQ", sequenceName="INGREDIENTID_SEQ")
+	@SequenceGenerator(name="INGREDIENTID_SEQ", sequenceName="INGREDIENTID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="INGREDIENTID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private String name;

@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Recipe;
 import com.revature.beans.User;
-import com.revature.data.RecipeDAO;
+import com.revature.services.RecipeService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping(value="/recipes")
 public class RecipeController {
 	@Autowired
-	private RecipeDAO rd;
+	private RecipeService rd;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public Set<Recipe> getAllRecipes(HttpSession s) {
@@ -38,7 +38,6 @@ public class RecipeController {
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)
 	public List<Recipe> getRecipeByName(HttpServletRequest req) {
-		System.out.println("*******************************" + req.getParameter("term"));
 		return rd.getRecipeByName(req.getParameter("term"));		
 	}
 	
@@ -49,7 +48,7 @@ public class RecipeController {
 		if (u == null) {
 			return null;
 		} else {
-		return rd.saveRecipe(newRecipe);
+		return rd.save(newRecipe);
 		}
 	}
 	@RequestMapping(method=RequestMethod.PUT)
@@ -59,7 +58,7 @@ public class RecipeController {
 		if (u == null) {
 			return null;
 		} else {
-			return rd.updateRecipe(putRecipe);
+			return rd.update(putRecipe);
 		}
 	}
 	@RequestMapping(method=RequestMethod.DELETE)
@@ -67,7 +66,7 @@ public class RecipeController {
 
 		User u = (User) s.getAttribute("user");
 		if (u != null) {
-		rd.deleteRecipe(deleteRecipe);
+		rd.delete(deleteRecipe);
 		}
 	}
 }

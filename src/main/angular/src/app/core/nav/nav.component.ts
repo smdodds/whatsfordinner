@@ -4,20 +4,20 @@ import { RecipeService } from '../../shared/services/recipe.service';
 import { Recipe } from'../../shared/classes/recipe';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+
   term:string;
   searchHelp:Array<Recipe>;
   constructor(
     private loginService : LoginService,
     private router: Router,
     private recipeService: RecipeService) { }
+
 
   ngOnInit() {
     this.loginService.login(null,null).subscribe();
@@ -52,6 +52,10 @@ export class NavComponent implements OnInit {
 
   goLogin():void{
     this.router.navigate(['/login']);
+  }
+
+  goToFridge():void{
+    this.router.navigate(['/fridge'])
   }
 
 }
