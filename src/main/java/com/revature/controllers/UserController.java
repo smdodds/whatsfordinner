@@ -62,14 +62,9 @@ public class UserController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public User addUser(@RequestBody User u, HttpSession session) {
-		User sessionUser = (User) session.getAttribute("user");
-		if (sessionUser == null) {
-			return null;
-		} else {
+	public User addUser(@RequestBody User u) {
 			int id = us.addUser(u);
 			return us.getUserbyId(id);
-		}
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)

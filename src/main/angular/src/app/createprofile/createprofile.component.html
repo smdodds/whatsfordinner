@@ -1,12 +1,12 @@
 <div class="container-fluid mt-4">
-  <form (ngSubmit)="onSubmit()" #profileForm="ngForm"> 
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
 
     <div class="form-group">
         <label for="firstname">First Name:</label>
         <input type="text" class="form-control" id="firstname"
                pattern="[A-Za-z]{1,}"
                required
-               [(ngModel)]="profile.firstname" name="firstname"
+               [(ngModel)]="user.firstname" name="firstname"
                #firstname="ngModel">
         <div [hidden]="firstname.valid || firstname.pristine"
              class="alert alert-danger">
@@ -19,7 +19,7 @@
         <input type="text" class="form-control" id="lastname"
                pattern="[A-Za-z]{1,}"
                required
-               [(ngModel)]="profile.lastname" name="lastname"
+               [(ngModel)]="user.lastname" name="lastname"
                #lastname="ngModel">
         <div [hidden]="lastname.valid || lastname.pristine"
              class="alert alert-danger">
@@ -32,7 +32,7 @@
         <input type="text" class="form-control" id="username"
                pattern=".{6,}"
                required
-               [(ngModel)]="profile.username" name="username"
+               [(ngModel)]="user.username" name="username"
                #username="ngModel">
         <div [hidden]="username.valid || username.pristine"
              class="alert alert-danger">
@@ -45,7 +45,7 @@
         <input type="password" class="form-control" id="password"
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                required
-               [(ngModel)]="profile.password" name="password"
+               [(ngModel)]="user.password" name="password"
                #password="ngModel">
         <div [hidden]="password.valid || password.pristine"
              class="alert alert-danger">
@@ -58,7 +58,7 @@
         <input type="email" class="form-control" id="email"
                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                required
-               [(ngModel)]="profile.email" name="email"
+               [(ngModel)]="user.email" name="email"
                #email="ngModel">
         <div [hidden]="email.valid || email.pristine"
              class="alert alert-danger">
@@ -70,7 +70,7 @@
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="invalidCheck" value=""
                 required
-                [(ngModel)]="profile.checkbox" name="checkbox"
+                [(ngModel)]="user.checkbox" name="checkbox"
                 #checkbox="ngModel">
           <label class="form-check-label" for="invalidCheck">
             I agree to the terms and conditions.
@@ -82,7 +82,7 @@
         </div>
     </div>
 
-      <button type="submit" class="btn btn-primary float-left" [disabled]="!profileForm.form.valid">Submit</button>
+      <button type="submit" class="btn btn-primary float-left" [disabled]="!userForm.form.valid">Submit</button>
       <button type="reset" class="btn btn-danger float-right" (click)='onCancel()'>Cancel</button>
 
   </form>

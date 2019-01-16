@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Profile } from './profile';
+import { UserService } from '../shared/services/user.service';
+import { User } from '../shared/classes/user';
 
 @Component({
   selector: 'app-createprofile',
@@ -8,25 +9,20 @@ import { Profile } from './profile';
   styleUrls: ['./createprofile.component.css']
 })
 export class CreateprofileComponent{
+  user = new User();
 
-  profile = new Profile(0,'','','','','', false);
-
-  constructor(private router: Router) { }
+  constructor(private userService : UserService, private router: Router ) { }
 
   ngOnInit() {
   }
 
   onSubmit():void{
-    console.log(this.profile.firstname);
-    console.log(this.profile.lastname);
-    console.log(this.profile.username);
-    console.log(this.profile.password);
-    console.log(this.profile.email);
-    console.log(this.profile.checkbox)
+    console.log('onSubmit()');
+    this.userService.addUser(this.user).subscribe();
   }
 
   onCancel():void{
-    console.log('cancel create profile clicked');
+    console.log('onCancel');
     this.router.navigate(['/login'])
   }
 }
