@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginformComponent  } from './core/loginform/loginform.component';
 import { HomeComponent} from './home/home.component'
 import { FullRecipeComponent} from './recipe/full-recipe/full-recipe.component'
+import { SearchRecipeComponent } from './recipe/search-recipe/search-recipe.component'
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginformComponent},
-  {path: 'recipe/:id', component: FullRecipeComponent}
+  {path: 'recipe/:id', component: FullRecipeComponent},
+  {path: 'search/:term', component: SearchRecipeComponent}
 ];
 
 @NgModule({

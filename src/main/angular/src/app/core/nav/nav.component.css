@@ -1,11 +1,3 @@
-@media screen and (min-width: 901px) {
-    #sitename{
-      font-size: 1.2vw;
-    }
-  }
-  
-  @media screen and (max-width: 900px) {
-    #sitename{
-      font-size: 20px;
-    }
-  }
+.input{
+    height: 2.4rem;
+}

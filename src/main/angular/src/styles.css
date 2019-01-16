@@ -11,14 +11,5 @@ body{
     cursor: pointer; 
  }
 
- @media screen and (min-width: 801px) {
-    .resfont{
-      font-size: 1.15vw;
-    }
-  }
-  
-  @media screen and (max-width: 800px) {
-    .resfont{
-      font-size: 15px;
-    }
-  }
+ .mousetext{cursor: text;}
+
