@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,21 +12,30 @@ import { LoginService } from './shared/services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { FridgeService } from './shared/services/fridge.service';
+import { FridgeComponent } from './fridge/fridge.component';
+import { IngredientService } from './shared/services/ingredient.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginformComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    FridgeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    IngredientService,
+    FridgeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,6 +20,10 @@ drop table INGREDIENTLIST cascade constraints;
 drop table FRIDGE_INGREDIENTS cascade constraints;
 
 --select 'drop sequence ' || sequence_name || ';' from user_sequences;
+drop sequence FRIDGEID_SEQ;
+drop sequence INGREDIENTID_SEQ;
+drop sequence LOGINID_SEQ;
+drop sequence RECIPEID_SEQ;
 
 CREATE TABLE Login (
     Id number PRIMARY KEY,
@@ -51,7 +55,7 @@ CREATE TABLE Fridge_Ingredients (
     IngredientId number,
     CONSTRAINT PK_FridgeIngredients PRIMARY KEY (FridgeId, IngredientId),
     CONSTRAINT FK_FridgeIngredients_FridgeId FOREIGN KEY (FridgeId) REFERENCES Fridge (Id),
-    CONSTRAINT FK_FridgeIngredients_IngrdntId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id)    
+    CONSTRAINT FK_FridgeIngredients_IngrdntId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id) 
 );
 
 CREATE TABLE Recipe (
@@ -64,9 +68,12 @@ CREATE TABLE IngredientList (
     RecipeId number,
     IngredientId number,
     CONSTRAINT PK_IngredientList PRIMARY KEY (RecipeId, IngredientId),
-    CONSTRAINT FK_IngredientList_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id),
-    CONSTRAINT FK_IngredientList_IngredientId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id) 
+    CONSTRAINT FK_IngredientList_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id) ON DELETE CASCADE,
+    CONSTRAINT FK_IngredientList_IngredientId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id)
 );
 
-drop sequence LOGINID_SEQ;
-create sequence LOGINID_SEQ;
+CREATE SEQUENCE LOGINID_SEQ START WITH 1;
+CREATE SEQUENCE FRIDGEID_SEQ START WITH 1;
+CREATE SEQUENCE INGREDIENTID_SEQ START WITH 1;
+CREATE SEQUENCE RECIPEID_SEQ START WITH 1;
+

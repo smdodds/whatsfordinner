@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@Column(name="Id")
-	@SequenceGenerator(name="LOGINID_SEQ", sequenceName="LOGINID_SEQ")
+	@SequenceGenerator(name="LOGINID_SEQ", sequenceName="LOGINID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="LOGINID_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private String username;
@@ -37,6 +37,17 @@ public class User {
 	}
 	public User(String username, String password, String firstname, String lastname, String email) {
 		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+
+	public User(int id, String username, String password, String firstname, String lastname, String email,
+			Fridge fridge) {
+		super();
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;

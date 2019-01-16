@@ -29,7 +29,6 @@ public class UserController {
 			u = us.login(u);
 			session.setAttribute("user", u);
 			session.setMaxInactiveInterval(0);
-			System.out.println(session.getAttribute("user"));
 			return u;
 		} else {
 			return sessionUser;
@@ -47,7 +46,7 @@ public class UserController {
 		if (sessionUser == null) {
 			return null;
 		} else {
-			return us.getUserbyId(1);
+			return us.getUserbyId(id);
 		}
 
 	}
@@ -86,9 +85,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.DELETE)
 	public void DeleteUser(@RequestBody User u, HttpSession session) {
 		User sessionUser = (User) session.getAttribute("user");
-		if (sessionUser == null) {
-			
-		} else {
+		if (sessionUser != null) {
 			us.deleteUser(u);
 		}
 	}
