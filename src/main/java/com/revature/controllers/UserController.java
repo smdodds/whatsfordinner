@@ -61,15 +61,22 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public User addUser(@RequestBody User u, HttpSession session) {
-		User sessionUser = (User) session.getAttribute("user");
-		if (sessionUser == null) {
-			return null;
-		} else {
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public User addUser(@RequestBody User u) {
 			int id = us.addUser(u);
 			return us.getUserbyId(id);
-		}
+	}
+	
+	@RequestMapping(value = "/email", method = RequestMethod.POST)
+	public User getUserByEmail(@RequestBody User u) {
+			User email = us.getUserByEmail(u);
+			return email;
+	}
+	
+	@RequestMapping(value = "/username", method = RequestMethod.POST)
+	public User getUserByUsername(@RequestBody User u) {
+			User uname = us.getUserByUsername(u);
+			return uname;
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
