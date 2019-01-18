@@ -33,7 +33,7 @@ export class LoginformComponent implements OnInit {
   }
 
   create(): void{
-    console.log('create profile clicked');
+    console.log('create()');
     this.router.navigate(['/createprofile'])
   }
 

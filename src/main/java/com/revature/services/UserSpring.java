@@ -50,4 +50,14 @@ public class UserSpring implements UserSevice {
 		ud.deleteUser(u);
 		
 	}
+
+	@Override
+	public User getUserByEmail(User u) {
+		return ud.getUserByEmail(u);
+	}
+
+	@Override
+	public User getUserByUsername(User u) {
+		return ud.getUserByUsername(u);
+	}
 }
