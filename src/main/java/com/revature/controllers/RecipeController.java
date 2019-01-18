@@ -28,17 +28,17 @@ public class RecipeController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public Set<Recipe> getAllRecipes(HttpSession s) {
-		return rd.getRecipes();	
+		return rd.getAll();	
 	}
 	
 	@RequestMapping(value="{id}",method=RequestMethod.GET)
 	public Recipe getRecipeById(@PathVariable("id") int id, HttpSession s) {
-		return rd.getRecipeById(id);		
+		return rd.getById(id);		
 	}
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)
 	public List<Recipe> getRecipeByName(HttpServletRequest req) {
-		return rd.getRecipeByName(req.getParameter("term"));		
+		return rd.getByName(req.getParameter("term"));		
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)

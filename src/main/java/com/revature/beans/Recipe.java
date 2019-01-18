@@ -1,6 +1,8 @@
 package com.revature.beans;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -36,6 +38,8 @@ public class Recipe {
         inverseJoinColumns = { @JoinColumn(name = "IngredientId") }
     )
     Set<Ingredient> ingredients = new HashSet<Ingredient>();
+	@ManyToMany(mappedBy = "favorites")
+    private List<User> users = new ArrayList<>();
 	
 	public Set<Ingredient> getIngredients() {
 		return ingredients;
