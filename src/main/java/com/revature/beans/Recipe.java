@@ -26,11 +26,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public class Recipe {
 	@Id
 	@Column(name="Id")
-	@SequenceGenerator(name="RECIPEID_SEQ", sequenceName="RECIPEID_SEQ")
+	@SequenceGenerator(name="RECIPEID_SEQ", sequenceName="RECIPEID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="RECIPEID_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String description;
+	@ManyToMany(mappedBy = "favorites")
+    private List<User> users = new ArrayList<User>();
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
         name = "IngredientList", 
@@ -38,17 +40,15 @@ public class Recipe {
         inverseJoinColumns = { @JoinColumn(name = "IngredientId") }
     )
     Set<Ingredient> ingredients = new HashSet<Ingredient>();
-	@ManyToMany(mappedBy = "favorites")
-    private List<User> users = new ArrayList<>();
 	
+	public Recipe() {
+		super();
+	}
 	public Set<Ingredient> getIngredients() {
 		return ingredients;
 	}
 	public void setIngredients(Set<Ingredient> ingredients) {
 		this.ingredients = ingredients;
-	}
-	public Recipe() {
-		super();
 	}
 	public int getId() {
 		return id;

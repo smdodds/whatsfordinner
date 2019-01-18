@@ -36,7 +36,7 @@ public class User {
 		joinColumns= {@JoinColumn(name="UserId")},
 		inverseJoinColumns= {@JoinColumn(name="RecipeId")})
 //	@JoinColumn(name="UserId")
-	private List<Recipe> favorites = new ArrayList<>();
+	private List<Recipe> favorites = new ArrayList<Recipe>();
 	
 	public User() {
 		super();
