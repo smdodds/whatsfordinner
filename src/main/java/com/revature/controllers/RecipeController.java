@@ -2,7 +2,6 @@ package com.revature.controllers;
 
 
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,18 +26,18 @@ public class RecipeController {
 	private RecipeService rd;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public Set<Recipe> getAllRecipes(HttpSession s) {
-		return rd.getRecipes();	
+	public List<Recipe> getAllRecipes(HttpSession s) {
+		return rd.getAll();	
 	}
 	
 	@RequestMapping(value="{id}",method=RequestMethod.GET)
 	public Recipe getRecipeById(@PathVariable("id") int id, HttpSession s) {
-		return rd.getRecipeById(id);		
+		return rd.getById(id);		
 	}
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)
 	public List<Recipe> getRecipeByName(HttpServletRequest req) {
-		return rd.getRecipeByName(req.getParameter("term"));		
+		return rd.getByName(req.getParameter("term"));		
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
