@@ -1,13 +1,11 @@
 package com.revature.data;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -23,24 +21,26 @@ public class RecipeHibernate implements RecipeDAO{
 	private HibernateUtil hu;
 
 	@Override
-	public Recipe saveRecipe(Recipe newRecipe) {
+	public Recipe save(Recipe r) {
 
 		Session s = hu.getSession();
-		if(getRecipeById(newRecipe.getId()) != null) {
+		Transaction tx = s.beginTransaction();
+		
+		try {			
+			s.save(r);
+			tx.commit();			
+			s.close();
+		}
+		catch(Exception e) {
+			tx.rollback();
 			s.close();
 			return null;
 		}
-		Transaction tx = s.beginTransaction();
-		
-		s.save(newRecipe);
-		
-		tx.commit();
-		s.close();
-		return newRecipe;
+		return r;
 	}
 
 	@Override
-	public Set<Recipe> getRecipes() {
+	public List<Recipe> getAll() {
 		
 		Session s = hu.getSession();
 		
@@ -49,11 +49,11 @@ public class RecipeHibernate implements RecipeDAO{
 		 
 		s.close();
 		
-		return new HashSet<Recipe>(rList);
+		return rList;
 	}
 
 	@Override
-	public Recipe getRecipeById(int id) {
+	public Recipe getById(int id) {
 		Session s = hu.getSession();
 		Recipe r = s.get(Recipe.class, id);
 		s.close();
@@ -61,10 +61,13 @@ public class RecipeHibernate implements RecipeDAO{
 	}
 
 	@Override
-	public Recipe getRecipeByName(String name) {
+	public List<Recipe> getByName(String name) {
+    
 		Session s = hu.getSession();
 		
-		Query<Recipe> q = s.createQuery("from com.revature.beans.Recipe where NAME=name:",Recipe.class);
+		Query<Recipe> q = s.createQuery("from com.revature.beans.Recipe where upper(NAME) like '%' || :name || '%' ",Recipe.class);
+		name = name.toUpperCase();
+		q.setParameter("name", name);
 		List<Recipe> rList = q.getResultList();
 		 
 		s.close();
@@ -73,19 +76,19 @@ public class RecipeHibernate implements RecipeDAO{
 			return null;
 		}
 		else {
-			return rList.get(0);
+			return rList;
 		}
 	}
 
 	@Override
-	public Recipe updateRecipe(Recipe updateRecipe) {
+	public Recipe update(Recipe r) {
 
 		Session s = hu.getSession();
 		
 		Transaction tx = s.beginTransaction();
 		
 		try{
-			s.update(updateRecipe);
+			s.update(r);
 			tx.commit();
 		}
 		catch(Exception e){
@@ -93,16 +96,16 @@ public class RecipeHibernate implements RecipeDAO{
 			s.close();
 			return null;
 		}
-		return updateRecipe;
+		return r;
 	}
 
 	@Override
-	public void deleteRecipe(Recipe deleterecipe) {
+	public void delete(Recipe r) {
 
 		Session s = hu.getSession();
 		
 		Transaction tx = s.beginTransaction();
-		s.delete(deleterecipe);
+		s.delete(r);
 		tx.commit();
 		s.close();
 	}
