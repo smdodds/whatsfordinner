@@ -15,9 +15,8 @@ const routes: Routes = [
   {path: 'search/:term', component: SearchRecipeComponent},
   {path: 'fridge', component: FridgeComponent}
 ];
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

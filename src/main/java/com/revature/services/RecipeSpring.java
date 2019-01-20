@@ -1,10 +1,12 @@
 package com.revature.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.beans.Ingredient;
 import com.revature.beans.Recipe;
 import com.revature.data.RecipeDAO;
 
@@ -15,32 +17,36 @@ public class RecipeSpring implements RecipeService{
 	
 	@Override
 	public Recipe save(Recipe r) {
-		return rd.save(r);
+		return rd.saveRecipe(r);
 	}
 
 	@Override
 	public Set<Recipe> getAll() {
-		return rd.getAll();
+		return rd.getRecipes();
 	}
 
 	@Override
 	public Recipe getById(int id) {
-		return rd.getById(id);
+		return rd.getRecipeById(id);
 	}
 
 	@Override
-	public Recipe getByName(String name) {
-		return rd.getByName(name);
+	public List<Recipe> getByName(String name) {
+		return rd.getRecipeByName(name);
+	}
+	
+	public List<Recipe> getByIngredient(List<Ingredient> ingredients) {
+		return rd.getRecipeByIngredients(ingredients);
 	}
 
 	@Override
 	public Recipe update(Recipe r) {
-		return rd.update(r);
+		return rd.updateRecipe(r);
 	}
 
 	@Override
 	public void delete(Recipe r) {
-		rd.delete(r);
+		rd.deleteRecipe(r);
 	}
 
 }
