@@ -18,7 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
 
-import { FullRecipeComponent } from './recipe/full-recipe/full-recipe.component';
 import { CreateprofileComponent } from './createprofile/createprofile.component';
 
 
@@ -29,7 +28,7 @@ import { CreateprofileComponent } from './createprofile/createprofile.component'
     NavComponent,
     HomeComponent,
     FullRecipeComponent,
-    CreateprofileComponent
+    CreateprofileComponent,
     SearchRecipeComponent,
     CreateRecipeComponent,
     FridgeComponent
