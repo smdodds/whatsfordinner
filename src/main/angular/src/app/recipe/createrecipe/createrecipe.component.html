@@ -1,15 +1,13 @@
 <div>
-    <input type="text" placeholder="Name" id="name"><br>
+    <input type="text" placeholder="Name" id="name" [(ngModel)]='name'><br>
     
     <table>
-        <tr *ngFor="let ingredient of ingredients" >
-            <input type='checkbox' value={{ingredient.id}}>
+        <tr *ngFor="let ingredient of ingredients; let i=index; let b=false">
+            <input type='checkbox' [(ngModel)]=b (change)=addIngredient(i,b,ingredient.id) >
             {{ingredient.name}}
         </tr>
     </table>
-
-    <input type="text" placeholder="Description" id="description"><br>
-
-    <button id="submitbtn" (click)="submitRecipe">Submit Recipe</button><br>
-    <button id="cancelbtn" (click)="cancelRecipe">Cancel</button><br>
+    <input type="text" placeholder="Description" id="description" [(ngModel)]='description'><br>
+    <button id="submitbtn" (click)=submitRecipe()>Submit Recipe</button><br>
+    <button id="cancelbtn" (click)=cancelRecipe()>Cancel</button><br>
 </div>

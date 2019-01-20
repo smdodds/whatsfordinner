@@ -11,4 +11,6 @@ public interface UserDAO {
 	Set<User>getUsers();
 	User updateUser(User u);
 	void deleteUser(User u);
+	User getUserByEmail(User u);
+	User getUserByUsername(User u);
 }

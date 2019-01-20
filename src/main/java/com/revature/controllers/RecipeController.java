@@ -2,7 +2,6 @@ package com.revature.controllers;
 
 
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,7 +26,7 @@ public class RecipeController {
 	private RecipeService rd;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public Set<Recipe> getAllRecipes(HttpSession s) {
+	public List<Recipe> getAllRecipes(HttpSession s) {
 		return rd.getAll();	
 	}
 	

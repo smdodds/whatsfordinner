@@ -12,8 +12,7 @@ import { Recipe } from '../classes/recipe'
 })
 export class RecipeService {
   private url = this.urlSource.getURL() + '/recipes';
-  private headers = new HttpHeaders({'Content-Type': 'application/json'});
-  
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});  
   constructor(private urlSource: UrlService, private http: HttpClient) { }
 
   getRecipe(id : number):Observable<Recipe>{
@@ -31,5 +30,13 @@ export class RecipeService {
         return rArray;
       }
     ));
+  }
+
+  saveRecipe(r: Recipe):Observable<Recipe>{
+    return this.http.post(this.url,r,{headers: this.headers, withCredentials:true}).pipe(map(
+      resp => {
+        const r:Recipe = resp as Recipe;
+        return r;
+       }));
   }
 }

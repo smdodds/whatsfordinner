@@ -82,5 +82,37 @@ public class UserHibernate implements UserDAO {
 		s.close();
 		
 	}
+	
+	@Override
+	public User getUserByEmail(User u) {
+		Session s = hu.getSession();
+		String query = "from com.revature.beans.User where EMAIL=:email";
+		Query<User> q = s.createQuery(query, User.class);
+		q.setParameter("email", u.getEmail());
+		List<User> l = q.list();
+		if(l.isEmpty()) {
+			s.close();
+			return null;
+		} else {
+			s.close();
+			return l.get(0);
+		}
+	}
+	
+	@Override
+	public User getUserByUsername(User u) {
+		Session s = hu.getSession();
+		String query = "from com.revature.beans.User where USERNAME=:username";
+		Query<User> q = s.createQuery(query, User.class);
+		q.setParameter("username", u.getUsername());
+		List<User> l = q.list();
+		if(l.isEmpty()) {
+			s.close();
+			return null;
+		} else {
+			s.close();
+			return l.get(0);
+		}
+	}
 
 }

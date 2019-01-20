@@ -1,7 +1,6 @@
 package com.revature.services;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class RecipeSpring implements RecipeService{
 	}
 
 	@Override
-	public Set<Recipe> getAll() {
+	public List<Recipe> getAll() {
 		return rd.getAll();
 	}
 
@@ -31,7 +30,11 @@ public class RecipeSpring implements RecipeService{
 
 	@Override
 	public List<Recipe> getByName(String name) {
+<<<<<<< HEAD
 		return rd.getRecipeByName(name);
+=======
+		return rd.getByName(name);
+>>>>>>> 6c4b621a47acfe74cbb6eec275ddf4e70b514bc6
 	}
 
 	@Override
