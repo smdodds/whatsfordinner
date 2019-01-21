@@ -4,12 +4,24 @@ import static org.junit.Assert.*;
 
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.revature.beans.User;
+import com.revature.utils.HibernateUtil;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {UserHibernate.class, HibernateUtil.class})
+@Transactional
 public class UserHibernateTest {
-	UserDAO ud = new UserHibernate();
+	@Autowired(required=true)
+	UserDAO ud;
+	
 	@Test
 	public void testAddUser() {
 		//Test Code
@@ -66,6 +78,11 @@ public class UserHibernateTest {
 		assertNotNull(found);
 	}
 
+	@Test
+	public void testGetUserswithFavorites() {
+		System.out.println(ud.getUserbyId(1).getFavorites().toString());
+		assertNotNull(ud.getUserbyId(1));
+	}
 	@Test
 	public void testGetUsers() {
 		

@@ -1,10 +1,20 @@
 package com.revature.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,7 +23,7 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@Column(name="Id")
-	@SequenceGenerator(name="LOGINID_SEQ", sequenceName="LOGINID_SEQ")
+	@SequenceGenerator(name="LOGINID_SEQ", sequenceName="LOGINID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="LOGINID_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private String username;
@@ -21,6 +31,11 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private String email;
+	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name="Favorites",
+		joinColumns= {@JoinColumn(name="UserId")},
+		inverseJoinColumns= {@JoinColumn(name="RecipeId")})
+	private List<Recipe> favorites = new ArrayList<Recipe>();
 	
 	public User() {
 		super();
@@ -92,11 +107,28 @@ public class User {
 		this.email = email;
 	}
 
+	public List<Recipe> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(List<Recipe> favorites) {
+		this.favorites = favorites;
+	}
+	
+	public void addFavorite(Recipe r) {
+		favorites.add(r);
+	}
+	
+	public void removeFavorite(Recipe r) {
+		favorites.remove(r);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((favorites == null) ? 0 : favorites.hashCode());
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
@@ -118,6 +150,11 @@ public class User {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
+			return false;
+		if (favorites == null) {
+			if (other.favorites != null)
+				return false;
+		} else if (!favorites.equals(other.favorites))
 			return false;
 		if (firstname == null) {
 			if (other.firstname != null)
@@ -147,6 +184,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", email=" + email + "]";
+				+ ", lastname=" + lastname + ", email=" + email + ", favorites=" + favorites + "]";
 	}
 }

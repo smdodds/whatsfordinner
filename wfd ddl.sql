@@ -55,7 +55,7 @@ CREATE TABLE Fridge_Ingredients (
     IngredientId number,
     CONSTRAINT PK_FridgeIngredients PRIMARY KEY (FridgeId, IngredientId),
     CONSTRAINT FK_FridgeIngredients_FridgeId FOREIGN KEY (FridgeId) REFERENCES Fridge (Id),
-    CONSTRAINT FK_FridgeIngredients_IngrdntId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id)    
+    CONSTRAINT FK_FridgeIngredients_IngrdntId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id) 
 );
 
 CREATE TABLE Recipe (
@@ -64,15 +64,24 @@ CREATE TABLE Recipe (
     Description varchar2(1000)
 );
 
+CREATE TABLE Favorites (
+    UserId number,
+    RecipeId number,
+    CONSTRAINT PK_Favorites PRIMARY KEY (UserId, RecipeId),
+    CONSTRAINT FK_Favorites_UserId FOREIGN KEY (UserId) REFERENCES Login (Id),
+    CONSTRAINT FK_Favorites_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id) 
+);
+
 CREATE TABLE IngredientList (
     RecipeId number,
     IngredientId number,
     CONSTRAINT PK_IngredientList PRIMARY KEY (RecipeId, IngredientId),
-    CONSTRAINT FK_IngredientList_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id),
-    CONSTRAINT FK_IngredientList_IngredientId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id) 
+    CONSTRAINT FK_IngredientList_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id) ON DELETE CASCADE,
+    CONSTRAINT FK_IngredientList_IngredientId FOREIGN KEY (IngredientId) REFERENCES Ingredient (Id)
 );
 
 CREATE SEQUENCE LOGINID_SEQ START WITH 1;
 CREATE SEQUENCE FRIDGEID_SEQ START WITH 1;
 CREATE SEQUENCE INGREDIENTID_SEQ START WITH 1;
 CREATE SEQUENCE RECIPEID_SEQ START WITH 1;
+

@@ -46,7 +46,7 @@ public class UserController {
 		if (sessionUser == null) {
 			return null;
 		} else {
-			return us.getUserbyId(1);
+			return us.getUserbyId(id);
 		}
 
 	}

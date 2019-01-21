@@ -39,15 +39,16 @@ public class RecipeHibernateTest {
 	
 	@Test
 	public void testAddRecipe(){
+		/*
 		testingredient1 = (Ingredient) test1.getById(-8);
 		testingredient2 = (Ingredient) test1.getById(-7);
 		testingredient3 = (Ingredient) test1.getById(-6);
+		*/
 		
-		/*
 		testingredient1.setName("Peanut Butter");
 		testingredient2.setName("Jelly");
 		testingredient3.setName("Bread");
-		*/
+		
 		
 		ingredients.add(testingredient1);
 		ingredients.add(testingredient2);

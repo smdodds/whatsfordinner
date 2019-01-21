@@ -20,11 +20,11 @@ import javax.persistence.Table;
 public class Fridge {
 	@Id
 	@Column(name="Id")
-	@SequenceGenerator(name="FRIDGEID_SEQ", sequenceName="FRIDGEID_SEQ")
+	@SequenceGenerator(name="FRIDGEID_SEQ", sequenceName="FRIDGEID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="FRIDGEID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private int userId;
-	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinTable(name="Fridge_Ingredients",
 			joinColumns=@JoinColumn(name="FridgeId"),
 			inverseJoinColumns=@JoinColumn(name="IngredientId"))

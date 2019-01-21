@@ -1,0 +1,23 @@
+
+<div class="container-fluid mt-5">
+    <table class="table">
+        <tbody>
+  <ng-container *ngFor="let recipe of recipes; let i = index">
+      <tr *ngIf="i%3===0">
+        </tr>
+        <td>
+            <div class="card recipe"  (click)="navRecipe(recipe.id)">
+                <div class="card-body">
+                  <h5 class="card-title">{{recipe.name}}</h5>
+                  <textarea class="form-control" rows="4">{{recipe.description}}</textarea>
+                </div>
+              </div>
+        </td>
+  </ng-container>
+</tbody>
+</table>
+</div>
+<div *ngIf="this.recipes === null || this.recipes.length===0">
+  <h1 class="display-1">No recipes found</h1>
+</div>
+    
