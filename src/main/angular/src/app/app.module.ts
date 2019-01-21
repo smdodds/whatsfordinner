@@ -17,6 +17,7 @@ import { IngredientService } from './shared/services/ingredient.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { IngredientListComponent } from './core/ingredient-list/ingredient-list.component';
 
 import { CreateprofileComponent } from './createprofile/createprofile.component';
 import { FavoriteService } from './shared/services/favorite.service';
@@ -32,7 +33,8 @@ import { FavoriteService } from './shared/services/favorite.service';
     CreateprofileComponent,
     SearchRecipeComponent,
     CreateRecipeComponent,
-    FridgeComponent
+    FridgeComponent,
+    IngredientListComponent
   ],
   imports: [
     BrowserModule,

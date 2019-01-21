@@ -1,0 +1,13 @@
+<ul>
+  <li *ngFor="let i of ingredients">
+    <div class="form-check">
+      <input class="form-check-input" 
+        type="checkbox" value="" 
+        id="{{i.id}}:{{i.name}}" 
+        (change)="toggle()">
+      <label class="form-check-label" for="{{i.id}}:{{i.name}}">
+        {{i.name}}
+      </label>
+    </div>
+  </li>
+</ul>
