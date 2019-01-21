@@ -69,5 +69,12 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  goToFridge(): void {
+    this.router.navigate(['/fridge']);
+  }
+
+  createRecipe(): void {
+    this.router.navigate(['/createrecipe']);
+  }
 
 }

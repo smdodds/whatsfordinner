@@ -21,6 +21,8 @@ import { IngredientListComponent } from './core/ingredient-list/ingredient-list.
 
 import { CreateprofileComponent } from './createprofile/createprofile.component';
 import { FavoriteService } from './shared/services/favorite.service';
+import { RecipeService } from './shared/services/recipe.service';
+import { UrlService } from './shared/services/url.service';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { FavoriteService } from './shared/services/favorite.service';
     LoginService,
     FridgeService,
     IngredientService,
+    RecipeService,
+    UrlService,
     FavoriteService
   ],
   bootstrap: [AppComponent]

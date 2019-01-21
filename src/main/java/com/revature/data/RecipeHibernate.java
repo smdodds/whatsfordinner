@@ -3,16 +3,12 @@ package com.revature.data;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import java.util.Set;
 
 import org.hibernate.query.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -55,7 +51,7 @@ public class RecipeHibernate implements RecipeDAO{
 		 
 		s.close();
 		
-		return rList;
+		return new HashSet<Recipe>(rList);
 	}
 
 	@Override
@@ -67,7 +63,7 @@ public class RecipeHibernate implements RecipeDAO{
 	}
 
 	@Override
-	public List<Recipe> getByName(String name) {
+	public List<Recipe> getRecipeByName(String name) {
     
 		Session s = hu.getSession();
 		

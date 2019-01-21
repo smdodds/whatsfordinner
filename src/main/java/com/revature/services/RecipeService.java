@@ -9,7 +9,7 @@ import com.revature.beans.Recipe;
 
 public interface RecipeService {
 	Recipe save(Recipe r);
-	List<Recipe> getAll();
+	Set<Recipe> getAll();
 	Recipe getById(int id);
 	List<Recipe> getByName(String name);
 	public List<Recipe> getByIngredient(List<Ingredient> ingredients);
