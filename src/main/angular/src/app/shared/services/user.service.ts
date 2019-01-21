@@ -60,7 +60,7 @@ user : User;
   }
 
   updateUser(u: User): Observable<User> {
-    return this.http.put(this.url, JSON.stringify(u), {headers: this.headers}).pipe(
+    return this.http.put(this.url, JSON.stringify(u), {headers: this.headers, withCredentials:true}).pipe(
       map(resp =>{
         const returnedUser: User = resp as User;
         return returnedUser;

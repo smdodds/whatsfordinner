@@ -10,9 +10,10 @@ import { LoginService } from '../shared/services/login.service';
   styleUrls: ['./updateprofile.component.css']
 })
 export class UpdateprofileComponent implements OnInit {
-  user: User;
+  user = new User();
   pass: String;
-  verify = new User();
+  formUser = new User();
+  receivedUser: User;
   emailVerify = true;
   unameVerify = true;
   cbox = false;
@@ -24,6 +25,12 @@ export class UpdateprofileComponent implements OnInit {
   ngOnInit() {
     if(this.loginService.isloggedIn()){
       this.user = this.loginService.getUser();
+      this.formUser.email = this.user.email;
+      this.formUser.username = this.user.username;
+      this.formUser.firstname = this.user.firstname;
+      this.formUser.lastname = this.user.lastname;
+      this.formUser.password = this.user.password;
+      this.formUser.id = this.user.id;
     } else{
       this.router.navigate(['/login']);
     }
@@ -45,56 +52,62 @@ export class UpdateprofileComponent implements OnInit {
   }
 
   emailVerification():void{
-    console.log('emailVerification()')
-    this.userService.getUserByEmail(this.user).subscribe(resp => {
-      this.verify = resp;
+    if(this.user.email === this.formUser.email){
+      this.emailVerify = true;
+    } else {
+      this.userService.getUserByEmail(this.formUser).subscribe(resp => {
+        this.receivedUser = resp;
 
-      if(this.verify != null){
-        if(this.user.email == this.verify.email){
-          this.emailVerify = false;
-        } else{
+        if(this.receivedUser != null){
+          if(this.receivedUser.email == this.formUser.email){
+            this.emailVerify = false;
+          } else{
+            this.emailVerify = true;
+          }
+
+        } else {
           this.emailVerify = true;
         }
 
-      } else {
-        this.emailVerify = true;
-      }
+        if(!this.emailVerify){
+          this.formUser.email = '';
+          this.cbox = false;
+        }
 
-      if(!this.emailVerify){
-        this.user.email = '';
-        this.cbox = false;
-      }
-
-    });
+      });
+    }
   }
 
   usernameVerification():void{
-    console.log('usernameVerification()')
-    this.userService.getUserByUsername(this.user).subscribe( resp => {
-      this.verify = resp;
+    if(this.user.username === this.formUser.username){
+      this.unameVerify = true;
+    } else{
 
-      if(this.verify != null){
+      this.userService.getUserByUsername(this.formUser).subscribe( resp => {
+        this.receivedUser = resp;
 
-        if(this.verify.username != null){
-          this.unameVerify = false;
-        } else {
+        if(this.receivedUser != null){
+
+          if(this.formUser.username == this.receivedUser.username){
+            this.unameVerify = false;
+          } else {
+            this.unameVerify = true;
+          }
+
+        } else{
           this.unameVerify = true;
         }
 
-      } else{
-        this.unameVerify = true;
-      }
+        if(!this.unameVerify){
+          this.formUser.username = '';
+          this.cbox = false;
+        }
 
-      if(!this.unameVerify){
-        this.user.username = '';
-        this.cbox = false;
-      }
-
-    });
+      });
+    }
   }
 
   onConditions():void{
-    console.log('onConditions()')
     this.usernameVerification();
     this.emailVerification();
   }
@@ -103,20 +116,16 @@ export class UpdateprofileComponent implements OnInit {
     this.cbox = false;
   }
 
-  onSubmit():void{
-    console.log('onSubmit()');
+  onUpdate():void{
       if(this.emailVerify && this.unameVerify){
-        this.userService.updateUser(this.user).subscribe();
+        this.userService.updateUser(this.formUser).subscribe( resp =>{
+          this.loginService.loggedUser = resp;
+        });
         this.router.navigate(['/home'])
       }
   }
 
-  onUpdate():void{
-
-  }
-
   onCancel():void{
-    console.log('onCancel');
     this.router.navigate(['/home'])
   }
 

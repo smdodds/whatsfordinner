@@ -2,7 +2,7 @@
   <div class="container-fluid mt-4">
     <form (ngSubmit)="onPassSubmit()" #passForm="ngForm"> 
         <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password">Please reconfirm your password:</label>
             <input type="password" class="form-control" id="password"
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                    required
@@ -30,7 +30,7 @@
           <input type="text" class="form-control" id="firstname" (focus)='resetCheckbox()'
                  pattern="[A-Za-z]{1,}"
                  required
-                 [(ngModel)]="user.firstname" name="firstname"
+                 [(ngModel)]="formUser.firstname" name="firstname"
                  #firstname="ngModel">
           <div [hidden]="firstname.valid || firstname.pristine"
                class="alert alert-danger">
@@ -43,7 +43,7 @@
           <input type="text" class="form-control" id="lastname" (focus)='resetCheckbox()'
                  pattern="[A-Za-z]{1,}"
                  required
-                 [(ngModel)]="user.lastname" name="lastname"
+                 [(ngModel)]="formUser.lastname" name="lastname"
                  #lastname="ngModel">
           <div [hidden]="lastname.valid || lastname.pristine"
                class="alert alert-danger">
@@ -56,7 +56,7 @@
           <input type="text" class="form-control" id="username" (focus)='resetCheckbox()'
                  pattern=".{6,}"
                  required
-                 [(ngModel)]="user.username" name="username"
+                 [(ngModel)]="formUser.username" name="username"
                  #username="ngModel">
           <div [hidden]="username.valid || username.pristine"
                class="alert alert-danger">
@@ -64,7 +64,7 @@
           </div>
           <div *ngIf='!unameVerify'
                class="alert alert-danger">
-            {{verify.username}} is already registered.
+            {{receivedUser.username}} is already registered.
           </div>
       </div>
   
@@ -73,7 +73,7 @@
           <input type="password" class="form-control" id="password" (focus)='resetCheckbox()'
                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                  required
-                 [(ngModel)]="user.password" name="password"
+                 [(ngModel)]="formUser.password" name="password"
                  #password="ngModel">
           <div [hidden]="password.valid || password.pristine"
                class="alert alert-danger">
@@ -86,7 +86,7 @@
           <input type="email" class="form-control" id="email" (focus)='resetCheckbox()'
                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                  required
-                 [(ngModel)]="user.email" name="email"
+                 [(ngModel)]="formUser.email" name="email"
                  #email="ngModel">
           <div [hidden]="email.valid || email.pristine"
                class="alert alert-danger">
@@ -94,12 +94,12 @@
           </div>
           <div *ngIf='!emailVerify'
                class="alert alert-danger">
-            {{verify.email}} is already registered.
+            {{receivedUser.email}} is already registered.
           </div>
       </div>
   
       <div class="form-group" 
-        *ngIf='user.firstname && user.lastname && (user.username?.length >= 6) && (user.password?.length >= 8) && (user.email?.length >= 6)'>
+        *ngIf='formUser.firstname && formUser.lastname && (formUser.username?.length >= 6) && (formUser.password?.length >= 8) && (formUser.email?.length >= 6)'>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="invalidCheck" [value]="" (click)='onConditions()'
                   required
