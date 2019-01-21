@@ -23,14 +23,25 @@ export class FavoriteService {
     private http: HttpClient) { }
 
   update(r: Recipe): Observable<Boolean> {
-    console.log(r);
-    console.log(this.url);
-    return this.http.post(this.url, r, {headers: this.headers, withCredentials:true})
-    .pipe(map(resp => { 
-      console.log(this.url);
+    return this.http.post(this.url, r, {headers: this.headers, withCredentials:true })
+    .pipe(map(resp => {
       this.loginService.loggedUser = resp as User;
-      this.favorited = true
+      this.favorited = true;
       return true; 
+    }));
+  }
+
+  delete(r: Recipe): Observable<Boolean> {
+    return this.http.delete(this.url + '/' + r.id, { withCredentials:true })
+    .pipe(map(resp => {
+      //this.loginService.loggedUser = resp as User;
+      for(let i = 0; i < this.loginService.loggedUser.favorites.length; i++) {
+        if(this.loginService.loggedUser.favorites[i].id == r.id) {
+          console.log("removing " + this.loginService.loggedUser.favorites.splice(i, 1));
+        }
+      }
+      this.favorited = false;
+      return false; 
     }));
   }
 }

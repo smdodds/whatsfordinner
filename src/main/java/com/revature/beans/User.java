@@ -118,6 +118,10 @@ public class User {
 	public void addFavorite(Recipe r) {
 		favorites.add(r);
 	}
+	
+	public void removeFavorite(Recipe r) {
+		favorites.remove(r);
+	}
 
 	@Override
 	public int hashCode() {

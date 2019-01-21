@@ -34,20 +34,24 @@ export class FullRecipeComponent implements OnInit {
     this.recipeService.getRecipe(this.id).subscribe(resp => {
       this.recipe = resp; 
     },
+    // after getting the recipe, check if it's in the user's favorites
     () => this.containsRecipe()
     );
   }
   
   
   favorite() {
-    this.favoriteService.update(this.recipe).subscribe(resp => {
-      console.log(this.favoriteService.favorited);
-    });
-    
+    if(this.containsRecipe()) {
+      this.favoriteService.delete(this.recipe).subscribe(resp => {
+      });
+    } else {
+      this.favoriteService.update(this.recipe).subscribe(resp => {
+      });
+    }    
   }
 
   containsRecipe(): Boolean {
-    console.log(this.loginService.loggedUser.favorites);
+    // check if the user's favorites contain the currently viewed recipe
     for(let i = 0; i < this.loginService.loggedUser.favorites.length; i++) {
       if(this.loginService.loggedUser.favorites[i].id == this.recipe.id) {
         return true;

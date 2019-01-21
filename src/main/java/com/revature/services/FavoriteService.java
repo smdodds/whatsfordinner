@@ -5,4 +5,5 @@ import com.revature.beans.User;
 
 public interface FavoriteService {
 	User update(Recipe r, User u);
+	void delete(User u, Integer id);
 }
