@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { IngredientListComponent } from './core/ingredient-list/ingredient-list.component';
 
 import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { FavoriteService } from './shared/services/favorite.service';
 import { RecipeService } from './shared/services/recipe.service';
 import { UrlService } from './shared/services/url.service';
@@ -33,6 +34,7 @@ import { UrlService } from './shared/services/url.service';
     HomeComponent,
     FullRecipeComponent,
     CreateprofileComponent,
+    UpdateprofileComponent,
     SearchRecipeComponent,
     CreateRecipeComponent,
     FridgeComponent,

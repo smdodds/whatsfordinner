@@ -63,6 +63,7 @@ export class NavComponent implements OnInit {
 
   logout():void{
     this.loginService.logout().subscribe();
+    this.router.navigate(['/login'])
   }
 
   goLogin():void{
@@ -77,4 +78,7 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/createrecipe']);
   }
 
+  updateProfile():void{
+    this.router.navigate(['/updateprofile']);
+  }
 }
