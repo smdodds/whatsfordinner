@@ -30,4 +30,8 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  updateProfile():void{
+    this.router.navigate(['/updateprofile']);
+  }
+
 }

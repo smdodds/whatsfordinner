@@ -14,6 +14,7 @@ import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FullRecipeComponent } from './recipe/full-recipe/full-recipe.component';
 import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CreateprofileComponent } from './createprofile/createprofile.component'
     NavComponent,
     HomeComponent,
     FullRecipeComponent,
-    CreateprofileComponent
+    CreateprofileComponent,
+    UpdateprofileComponent
   ],
   imports: [
     BrowserModule,
