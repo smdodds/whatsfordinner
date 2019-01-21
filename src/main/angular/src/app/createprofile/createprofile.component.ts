@@ -13,11 +13,9 @@ export class CreateprofileComponent{
   verify = new User();
   emailVerify = true;
   unameVerify = true;
-  cbox: boolean;
+  cbox = false;
 
-  constructor(private userService : UserService, private router: Router ) { 
-    this.cbox = false;
-  }
+  constructor(private userService : UserService, private router: Router ) {}
 
   ngOnInit() {
   }
