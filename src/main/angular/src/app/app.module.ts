@@ -19,6 +19,8 @@ import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { IngredientListComponent } from './core/ingredient-list/ingredient-list.component';
 
+import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { FavoriteService } from './shared/services/favorite.service';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { IngredientListComponent } from './core/ingredient-list/ingredient-list.
     NavComponent,
     HomeComponent,
     FullRecipeComponent,
+    CreateprofileComponent,
     SearchRecipeComponent,
     CreateRecipeComponent,
     FridgeComponent,
@@ -40,7 +43,12 @@ import { IngredientListComponent } from './core/ingredient-list/ingredient-list.
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    FridgeService,
+    IngredientService,
+    FavoriteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

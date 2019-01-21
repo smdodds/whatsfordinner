@@ -3,7 +3,6 @@ package com.revature.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -41,7 +40,7 @@ public class RecipeController {
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)
 	public List<Recipe> getRecipeByName(HttpServletRequest req) {
-			return rd.getByName(req.getParameter("term"));	
+		return rd.getByName(req.getParameter("term"));	
 	}
 	
 	@RequestMapping(value="/searchby",method=RequestMethod.POST)

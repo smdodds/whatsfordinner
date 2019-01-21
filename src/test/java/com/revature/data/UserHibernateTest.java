@@ -79,6 +79,11 @@ public class UserHibernateTest {
 	}
 
 	@Test
+	public void testGetUserswithFavorites() {
+		System.out.println(ud.getUserbyId(1).getFavorites().toString());
+		assertNotNull(ud.getUserbyId(1));
+	}
+	@Test
 	public void testGetUsers() {
 		
 			//Adding Users
