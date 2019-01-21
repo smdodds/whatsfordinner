@@ -83,6 +83,7 @@ public class UserController {
 	public User updateUser(@RequestBody User u, HttpSession session) {
 		User sessionUser = (User) session.getAttribute("user");
 		if (sessionUser == null) {
+			System.out.println("SESSION USER IS NULL ********************");
 			return null;
 		} else {
 			return us.updateUser(u);

@@ -8,6 +8,7 @@ import { CreateRecipeComponent } from './recipe/createrecipe/createrecipe.compon
 import { SearchRecipeComponent } from './recipe/search-recipe/search-recipe.component';
 import { FridgeComponent } from './fridge/fridge.component';
 import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginformComponent},
   {path: 'recipe/:id', component: FullRecipeComponent},
   {path: 'createprofile', component: CreateprofileComponent},
+  {path: 'updateprofile', component: UpdateprofileComponent},
   {path: 'createrecipe', component: CreateRecipeComponent},
   {path: 'search/:term', component: SearchRecipeComponent},
   {path: 'fridge', component: FridgeComponent}
