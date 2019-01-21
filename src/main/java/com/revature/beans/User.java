@@ -31,11 +31,10 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private String email;
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name="Favorites",
 		joinColumns= {@JoinColumn(name="UserId")},
 		inverseJoinColumns= {@JoinColumn(name="RecipeId")})
-//	@JoinColumn(name="UserId")
 	private List<Recipe> favorites = new ArrayList<Recipe>();
 	
 	public User() {
@@ -114,6 +113,10 @@ public class User {
 
 	public void setFavorites(List<Recipe> favorites) {
 		this.favorites = favorites;
+	}
+	
+	public void addFavorite(Recipe r) {
+		favorites.add(r);
 	}
 
 	@Override

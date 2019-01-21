@@ -30,11 +30,7 @@ public class RecipeSpring implements RecipeService{
 
 	@Override
 	public List<Recipe> getByName(String name) {
-<<<<<<< HEAD
-		return rd.getRecipeByName(name);
-=======
 		return rd.getByName(name);
->>>>>>> 6c4b621a47acfe74cbb6eec275ddf4e70b514bc6
 	}
 
 	@Override
