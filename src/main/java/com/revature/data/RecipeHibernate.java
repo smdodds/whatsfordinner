@@ -98,7 +98,15 @@ public class RecipeHibernate implements RecipeDAO{
 		query.setParameterList("ids", ids);
 		List<Recipe> rList = query.list();
 		
-		return rList;
+		// loop through result set, check to see if ingredients contains recipe ingredient list
+		for(int i = rList.size() - 1; i >= 0; i--) {
+			if(!ingredients.containsAll(rList.get(i).getIngredients())) {
+				rList.remove(i);
+			}
+		}
+		
+		// return result list, or null if empty
+		return (rList.size() == 0) ? null : rList;
 	}
 
 	
