@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginformComponent  } from './core/loginform/loginform.component';
 import { HomeComponent} from './home/home.component';
 import { FullRecipeComponent} from './recipe/full-recipe/full-recipe.component';
+import { CreateprofileComponent } from './createprofile/createprofile.component'
 
 import { CreateRecipeComponent } from './recipe/createrecipe/createrecipe.component';
 import { SearchRecipeComponent } from './recipe/search-recipe/search-recipe.component';

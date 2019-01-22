@@ -89,4 +89,16 @@
             </ul>
         </div>
     </div>
+    
+    <div *ngFor="let comment of comments">
+        <label>Commented on {{comment.submissionDate}}</label>
+        <div class="form-control" >
+            {{comment.commentText}}
+        </div>
+    </div>
+    <div *ngIf="loggedin">
+        <label>User: {{login.getUser().username}}</label>
+        <input class="form-control" type="text" placeholder="Leave a comment" [(ngModel)]="newComment.commentText">
+        <button (click)=addNewComment()>Submit Comment</button>
+    </div>
 </div>
