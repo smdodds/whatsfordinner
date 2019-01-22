@@ -3,4 +3,5 @@ export class Comment {
     commentText:String;
     userId:number;
     recipeId:number;
+    submissionDate:String;
 }

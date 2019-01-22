@@ -10,7 +10,8 @@ import com.revature.data.CommentDAO;
 
 @Service
 public class CommentSpring implements CommentService{
-	@Autowired CommentDAO cd;
+	@Autowired 
+	private CommentDAO cd;
 
 	@Override
 	public Comment save(Comment c) {

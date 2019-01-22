@@ -76,7 +76,8 @@ CREATE TABLE Comments(
 	Id number PRIMARY KEY,
 	CommentText varchar2(280),
 	RecipeId number,
-	UserId number,	
+	UserId number,
+	SubmissionDate date,
     CONSTRAINT FK_Comment_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id) ON DELETE CASCADE,
     CONSTRAINT FK_Comment_UserId FOREIGN KEY (UserId) REFERENCES Login (Id) ON DELETE CASCADE
 );

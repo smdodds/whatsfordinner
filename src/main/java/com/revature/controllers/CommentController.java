@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Comment;
 import com.revature.beans.User;
-import com.revature.services.CommentSpring;
+import com.revature.services.CommentService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping(value="/comment")
 public class CommentController {
 	@Autowired
-	private CommentSpring cs;
+	private CommentService cs;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public Comment saveComment(@RequestBody Comment newComment, HttpSession s) {
@@ -35,7 +35,7 @@ public class CommentController {
 		}
 	}
 
-	@RequestMapping(value="/",method=RequestMethod.GET)
+	@RequestMapping(value="{id}",method=RequestMethod.GET)
 	public List<Comment> getrecipeComments(@PathVariable("id") int id){
 		return cs.getByRecipeId(id);
 	}

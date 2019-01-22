@@ -1,6 +1,7 @@
 package com.revature.data;
 
 import java.util.List;
+import java.sql.Date;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,7 +20,10 @@ public class CommentHibernate implements CommentDAO{
 	
 	@Override
 	public Comment save(Comment c) {
-
+		Date curr = new Date(System.currentTimeMillis());
+		
+		c.setSubmissionDate(curr);
+				
 		Session s= hu.getSession();
 		Transaction tx = s.beginTransaction();
 		
@@ -37,11 +41,12 @@ public class CommentHibernate implements CommentDAO{
 	}
 
 	@Override
-	public List<Comment> getByRecipeId(int i) {
+	public List<Comment> getByRecipeId(int id) {
 
 		Session s= hu.getSession();
 
-		Query<Comment> q = s.createQuery("from com.revature.beans.Comment where RecipeId=:i",Comment.class);
+		Query<Comment> q = s.createQuery("from com.revature.beans.Comment where RECIPEID=:id order by SUBMISSIONDATE DESC", Comment.class);
+		q.setParameter("id", id);
 
 		List<Comment> cList = q.getResultList();
 		
