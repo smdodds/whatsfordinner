@@ -63,13 +63,4 @@ addNewComment(){
 
   this.router.navigate(['/recipe/'+this.id ]);
   }
-
-    getCommentUser(id:number):String{
-      let commentUser:User;
-
-      this.userService.getUserById(id).subscribe(resp => {
-        commentUser=resp});
-      return commentUser.username;
-  }
 }
-//Commented by {{getCommentUser(comment.userId)}} on 
