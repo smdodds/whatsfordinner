@@ -1,3 +1,4 @@
+
 <div class="container-fluid mt-5">
     <table class="table">
         <tbody>
@@ -16,5 +17,7 @@
 </tbody>
 </table>
 </div>
-
+<div *ngIf="this.recipes === null || this.recipes.length===0">
+  <h1 class="display-1">No recipes found</h1>
+</div>
     

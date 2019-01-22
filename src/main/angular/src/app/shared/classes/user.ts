@@ -1,3 +1,5 @@
+import { Recipe } from './recipe';
+
 export class User {
     id: number;
     username: string;
@@ -5,4 +7,5 @@ export class User {
     firstname: string;
     lastname: string;
     email: string;
+    favorites: Array<Recipe>;
 }

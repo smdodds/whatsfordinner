@@ -17,8 +17,13 @@ import { IngredientService } from './shared/services/ingredient.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './core/nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { IngredientListComponent } from './core/ingredient-list/ingredient-list.component';
 
 import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { FavoriteService } from './shared/services/favorite.service';
+import { RecipeService } from './shared/services/recipe.service';
+import { UrlService } from './shared/services/url.service';
 
 
 @NgModule({
@@ -29,9 +34,11 @@ import { CreateprofileComponent } from './createprofile/createprofile.component'
     HomeComponent,
     FullRecipeComponent,
     CreateprofileComponent,
+    UpdateprofileComponent,
     SearchRecipeComponent,
     CreateRecipeComponent,
-    FridgeComponent
+    FridgeComponent,
+    IngredientListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,14 @@ import { CreateprofileComponent } from './createprofile/createprofile.component'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    FridgeService,
+    IngredientService,
+    RecipeService,
+    UrlService,
+    FavoriteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,6 +12,7 @@ import { UrlService } from './url.service';
   providedIn: 'root'
 })
 export class UserService {
+private url = this.urlSource.getURL() + '/users';
 private urlAdd = this.urlSource.getURL() + '/users/add';
 private urlGet = this.urlSource.getURL() + '/users/get';
 private urlGetByEmail = this.urlSource.getURL() + '/users/email';
@@ -58,5 +59,13 @@ user : User;
       )
   }
 
+  updateUser(u: User): Observable<User> {
+    return this.http.put(this.url, JSON.stringify(u), {headers: this.headers, withCredentials:true}).pipe(
+      map(resp =>{
+        const returnedUser: User = resp as User;
+        return returnedUser;
+      })
+    )
+  }
 
 }

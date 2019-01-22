@@ -5,10 +5,11 @@ import { HomeComponent} from './home/home.component';
 import { FullRecipeComponent} from './recipe/full-recipe/full-recipe.component';
 import { CreateprofileComponent } from './createprofile/createprofile.component'
 
-
 import { CreateRecipeComponent } from './recipe/createrecipe/createrecipe.component';
 import { SearchRecipeComponent } from './recipe/search-recipe/search-recipe.component';
 import { FridgeComponent } from './fridge/fridge.component';
+import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 
 const routes: Routes = [
@@ -16,11 +17,11 @@ const routes: Routes = [
   {path: 'login', component: LoginformComponent},
   {path: 'recipe/:id', component: FullRecipeComponent},
   {path: 'createprofile', component: CreateprofileComponent},
+  {path: 'updateprofile', component: UpdateprofileComponent},
   {path: 'createrecipe', component: CreateRecipeComponent},
   {path: 'search/:term', component: SearchRecipeComponent},
   {path: 'fridge', component: FridgeComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]

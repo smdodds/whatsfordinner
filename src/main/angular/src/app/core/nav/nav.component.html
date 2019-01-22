@@ -16,17 +16,44 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <div class="input-group mt-2">
-                <div class="dropdown">
-                    <input class="dropdown-toggle border text-left mousetext input-group input" type="text" id="search" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false" (input)="search()" (keyup.enter)="navSearch()" [(ngModel)]="term">
-                    <div class="dropdown-menu" aria-labelledby="search">
-                      <ng-container *ngFor="let recipe of searchHelp; let i=index">
-                        <span class="dropdown-item pointer" *ngIf="i<5" (click)="fill(recipe.name)">{{recipe.name}}</span>
-                      </ng-container>
+              <div class="dropdown">
+                <input class="dropdown-toggle border text-left mousetext input-group input" type="text" id="search"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (input)="search()" (keyup.enter)="navSearch()"
+                  [(ngModel)]="term">
+                <div class="dropdown-menu" aria-labelledby="search">
+                  <ng-container *ngFor="let recipe of searchHelp; let i=index">
+                    <span class="dropdown-item pointer" *ngIf="i<5" (click)="fill(recipe.name)">{{recipe.name}}</span>
+                  </ng-container>
+                </div>
+              </div>
+              <!-- Button trigger modal -->
+              <button type="button" 
+                class="btn btn-outline-secondary" 
+                data-toggle="modal" 
+                data-target="#ingredients"
+                (click)="newSearch()">
+                Search by ingredient
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="ingredients" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Ingredients</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <app-ingredient-list></app-ingredient-list>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="navSearchIngredient()">Search</button>
                     </div>
                   </div>
-              <div class="input-group-lg">
-                <button class="btn btn-outline-secondary" type="button">Search by ingredient</button>
+                </div>
               </div>
               <div class="p-2 pointer resfont" (click)="navSearch()">
                 <i class="fas fa-search"></i>
@@ -54,10 +81,6 @@
       </div>
     </nav>
   </div>
-
-
-
-
   <router-outlet></router-outlet>
 </div>
 
@@ -71,8 +94,9 @@
       </button>
       <div class="dropdown-menu resfont" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item resfont" href="#">View Profile</a>
+        <a class="dropdown-item resfont" (click)="updateProfile()">Update Profile</a>
         <div class="dropdown-item resfont" (click)="goToFridge()">Fridge</div>
-        <a class="dropdown-item resfont" routerLink="createrecipe">Add Recipe</a>
+        <div class="dropdown-item resfont" (click)="createRecipe()">Add Recipe</div>
         <div class="dropdown-item resfont" (click)="logout()">Logout</div>
       </div>
     </div>

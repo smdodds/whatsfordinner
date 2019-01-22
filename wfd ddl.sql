@@ -64,6 +64,14 @@ CREATE TABLE Recipe (
     Description varchar2(1000)
 );
 
+CREATE TABLE Favorites (
+    UserId number,
+    RecipeId number,
+    CONSTRAINT PK_Favorites PRIMARY KEY (UserId, RecipeId),
+    CONSTRAINT FK_Favorites_UserId FOREIGN KEY (UserId) REFERENCES Login (Id),
+    CONSTRAINT FK_Favorites_RecipeId FOREIGN KEY (RecipeId) REFERENCES Recipe (Id) 
+);
+
 CREATE TABLE IngredientList (
     RecipeId number,
     IngredientId number,

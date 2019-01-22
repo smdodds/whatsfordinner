@@ -1,0 +1,123 @@
+<ng-container *ngIf="!passConfirm; else displayUpdate">
+  <div class="container-fluid mt-4">
+    <form (ngSubmit)="onPassSubmit()" #passForm="ngForm"> 
+        <div class="form-group">
+            <label for="password">Please reconfirm your password:</label>
+            <input type="password" class="form-control" id="password"
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   required
+                   [(ngModel)]="pass" name="password"
+                   #password="ngModel">
+            <div [hidden]="!passAlert"
+                 class="alert alert-danger">
+              Invalid password
+            </div>
+        </div>
+        <button type="submit" id='confirm' class="btn btn-primary float-left">Confirm</button>
+        <button type="reset" class="btn btn-danger float-right" (click)='onCancel()'>Cancel</button>
+  
+    </form>
+  </div>
+</ng-container>
+
+
+<ng-template #displayUpdate>
+  <div class="container-fluid mt-4">
+    <form (ngSubmit)="onUpdate()" #updateForm="ngForm"> 
+  
+      <div class="form-group">
+          <label for="firstname">First Name:</label>
+          <input type="text" class="form-control" id="firstname" (focus)='resetCheckbox()'
+                 pattern="[A-Za-z]{1,}"
+                 required
+                 [(ngModel)]="formUser.firstname" name="firstname"
+                 #firstname="ngModel">
+          <div [hidden]="firstname.valid || firstname.pristine"
+               class="alert alert-danger">
+            First Name is required. Only letters allowed.
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <label for="lastname">Last Name:</label>
+          <input type="text" class="form-control" id="lastname" (focus)='resetCheckbox()'
+                 pattern="[A-Za-z]{1,}"
+                 required
+                 [(ngModel)]="formUser.lastname" name="lastname"
+                 #lastname="ngModel">
+          <div [hidden]="lastname.valid || lastname.pristine"
+               class="alert alert-danger">
+            Last Name is required. Only letters allowed.
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" (focus)='resetCheckbox()'
+                 pattern=".{6,}"
+                 required
+                 [(ngModel)]="formUser.username" name="username"
+                 #username="ngModel">
+          <div [hidden]="username.valid || username.pristine"
+               class="alert alert-danger">
+            Username is required. Must have at least 6 characters.
+          </div>
+          <div *ngIf='!unameVerify'
+               class="alert alert-danger">
+            {{receivedUser.username}} is already registered.
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" (focus)='resetCheckbox()'
+                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                 required
+                 [(ngModel)]="formUser.password" name="password"
+                 #password="ngModel">
+          <div [hidden]="password.valid || password.pristine"
+               class="alert alert-danger">
+            Password is required. Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" (focus)='resetCheckbox()'
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                 required
+                 [(ngModel)]="formUser.email" name="email"
+                 #email="ngModel">
+          <div [hidden]="email.valid || email.pristine"
+               class="alert alert-danger">
+            Email is required.
+          </div>
+          <div *ngIf='!emailVerify'
+               class="alert alert-danger">
+            {{receivedUser.email}} is already registered.
+          </div>
+      </div>
+  
+      <div class="form-group" 
+        *ngIf='formUser.firstname && formUser.lastname && (formUser.username?.length >= 6) && (formUser.password?.length >= 8) && (formUser.email?.length >= 6)'>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="invalidCheck" [value]="" (click)='onConditions()'
+                  required
+                  [(ngModel)]="cbox" name="checkbox"
+                  #checkbox="ngModel">
+            <label class="form-check-label" for="invalidCheck">
+              I agree to the terms and conditions.
+            </label>
+            <div [hidden]="checkbox.valid || checkbox.pristine"
+                  class="alert alert-danger">
+              You must agree before submitting.
+            </div>
+          </div>
+      </div>
+  
+        <button type="submit" id='update' class="btn btn-primary float-left" [disabled]="!updateForm.form.valid">Update</button>
+        <button type="reset" class="btn btn-danger float-right" (click)='onCancel()'>Cancel</button>
+  
+    </form>
+  </div>
+</ng-template>

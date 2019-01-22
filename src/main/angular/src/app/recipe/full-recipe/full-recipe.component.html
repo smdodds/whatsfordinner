@@ -16,9 +16,14 @@
                     <table class="table ml-3">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-center pointer">
+                                <th scope="col" class="text-center pointer" (click)="favorite()">
                                     <div>
-                                        <i class="fas fa-heart"></i>
+                                        <i *ngIf="!this.loginService.isloggedIn()" class="far fa-heart"></i>
+                                    </div>
+                                    <div [ngSwitch]="containsRecipe()">
+                                        <i *ngSwitchCase="false" class="far fa-heart"></i>
+                                        <i *ngSwitchCase="true" class="fas fa-heart"></i>
+                                        <i *ngSwitchDefault class="far fa-heart"></i>
                                     </div>
                                     Save
                                 </th>
