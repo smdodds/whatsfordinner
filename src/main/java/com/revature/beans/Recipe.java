@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @Table(name="Recipe")
 public class Recipe {
 	@Id
